@@ -27,5 +27,5 @@
   "dependencies": {
     "pnpm": "^8.15.5"
   },
-  "postinstall":"patch-package"
+   "postinstall":"patch-package"
 }
