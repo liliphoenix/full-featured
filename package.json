@@ -10,6 +10,8 @@
     "dev:all":"pnpm -C ./packages/server start & pnpm -C ./packages/docs docs:dev & pnpm -C ./packages/vite-vue3 dev",
     "dev:template":"pnpm -C ./packages/server start & pnpm -C ./packages/vite-vue3 dev",
     "dev:docs":"pnpm -C ./packages/docs dev:docs",
+    "install:doc":"pnpm -C ./packages/docs install",
+
     "postinstall": "patch-package"
   },
   "keywords": [],
