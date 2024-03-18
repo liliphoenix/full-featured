@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-
-npm run -C ./packages/vite-vue3 lint && npm run -C ./packages/vite-vue3 format 
+# root为最外面的文件夹
+npm run -C ./packages/vite-vue3 lint && npm run -C ./packages/vite-vue3 format  
