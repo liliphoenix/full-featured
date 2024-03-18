@@ -1,5 +1,5 @@
-# #!/usr/bin/env sh
-# . "$(dirname -- "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
 
-# npm run lint && npm run format 
+npm run ../package/vite-vue3 lint && npm run ../package/vite-vue3 format 
