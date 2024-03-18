@@ -124,3 +124,5 @@ git reset --hard orign/main
 版本回退
 
 ali-oss的acesskey假如在代码中 需要进行手动授权
+
+vitepress部署好以后别忘了在 配置文件配置base路径 要不然资源文件访问不到
