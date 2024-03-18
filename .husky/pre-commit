@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 
-npm run ../package/vite-vue3 lint && npm run ../package/vite-vue3 format 
+npm run -C ./packages/vite-vue3 lint && npm run -C ./packages/vite-vue3 format 
