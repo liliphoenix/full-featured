@@ -4,7 +4,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "full-featured",
   description: "A VitePress Site",
-  base: "full-featured",
+  base: "/full-featured/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
