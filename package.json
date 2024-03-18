@@ -7,6 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "git add . && cz-customizable",
+    "dev:all":"pnpm -C ./packages/server start & pnpm -C ./packages/docs docs:dev & pnpm -C ./packages/vite-vue3 dev",
+    "dev:template":"pnpm -C ./packages/server start & pnpm -C ./packages/vite-vue3 dev",
+    "dev:docs":"pnpm -C ./packages/docs dev:docs",
     "postinstall": "patch-package"
   },
   "keywords": [],

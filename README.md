@@ -119,3 +119,8 @@
 
 husky/\_/husky.sh: No such file or directory
 解决：从新`npx husky install`
+
+git reset --hard orign/main
+版本回退
+
+ali-oss的acesskey假如在代码中 需要进行手动授权
