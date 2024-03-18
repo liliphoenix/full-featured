@@ -1,4 +1,4 @@
 packages:
-  - "packages/*"
-  - "scripts/*"
-  - "docs/*"
+  - "packages/**"
+  - "scripts/**"
+  - "docs/**"
