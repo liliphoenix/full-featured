@@ -18,15 +18,6 @@ export const getVueGlobalValue: () => globalProperties | null = () => {
   }
 }
 
-export const getVueGlobalValue3: () => globalProperties | null = () => {
-  const globalProperties = getCurrentInstance()
-  if (globalProperties !== null) {
-    return globalProperties.appContext.config.globalProperties
-  } else {
-    return null
-  }
-}
-/**
 /**
  * 🌸 文件
  * @params url 文件下载地址
