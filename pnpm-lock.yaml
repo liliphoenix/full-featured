@@ -42,9 +42,6 @@ importers:
       typescript:
         specifier: ^5.4.2
         version: 5.4.2
-
-  packages/docs:
-    devDependencies:
       vitepress:
         specifier: 1.0.0-rc.45
         version: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.28)(search-insights@2.13.0)(typescript@5.4.2)

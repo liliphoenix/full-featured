@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "full-featured"
-  text: "一款功能齐全的企业级脚手架"
+  text: "A VitePress Site"
   tagline: My great project tagline
   actions:
     - theme: brand
