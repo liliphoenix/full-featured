@@ -1,4 +1,4 @@
-export type location = () => {
+export type deviceType = () => {
   userTime: Date
   browserCode: string
   browserName: string

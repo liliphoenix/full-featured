@@ -25,6 +25,8 @@ export const isEmpty = function (obj): boolean {
 
   if (tostring.call(obj) == '[object Object]') {
     for (const name in obj) {
+      console.log(name)
+
       return false
     }
   }
