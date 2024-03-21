@@ -19,13 +19,13 @@ jobs:
             persist-credentials: false
         # 指定一下node版本，这里用node20
         - name: Setup Node
-          uses: actions/setup-node
+          uses: actions/setup-node@v4
           with:
             node-verson: 20
             cache: npm
         # 此项用户支持使用gitPage操作，如果不使用 不写即可
         # - name: Setup Pages
-        #   uses: actions/configure-pages
+        #   uses: actions/configure-pages@v4
 
         # 下载依赖
         - name: ⏬ Install dependencies
