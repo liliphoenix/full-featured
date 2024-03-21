@@ -14,13 +14,13 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
           with:
             persist-credentials: false
         # 指定一下node版本，这里用node20
 
         - name: Setup pnpm
-          uses: pnpm/action-setup@v4
+          uses: pnpm/action-setup@v3
           with:
             version: 8
         - name: Setup Node
