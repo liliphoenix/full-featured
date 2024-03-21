@@ -19,20 +19,20 @@ jobs:
             persist-credentials: false
         # 指定一下node版本，这里用node20
         - name: Setup Node
-          uses: actions/setup-node@v4
+          uses: pnpm/action-setup@v3
           with:
             node-version: 20
-            cache: npm
+            cache: pnpm
         # 此项用户支持使用gitPage操作，如果不使用 不写即可
         # - name: Setup Pages
         #   uses: actions/configure-pages@v4
 
         # 下载依赖
         - name: ⏬ Install dependencies
-          run: npm run install:template
+          run: pnpm run install:template
         # 打包构建
         - name: 📦 Build
-          run: npm run build:template
+          run: pnpm run build:template
         # 此项用于支持gitPage操作，用户上传dist文件夹
         # - name: Upload dist
         #   uses: actions/upload-pages-artifact@v1
