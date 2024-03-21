@@ -21,7 +21,7 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v4
           with:
-            node-verson: 20
+            node-version: 20
             cache: npm
         # 此项用户支持使用gitPage操作，如果不使用 不写即可
         # - name: Setup Pages
