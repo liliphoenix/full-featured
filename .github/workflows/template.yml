@@ -1,2 +1,45 @@
 #
 name: vite-vue3 template build test
+
+on:
+  push: 
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs: 
+  # 构建工作
+  build: 
+    # 运行环境
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            persist-credentials: false
+        # 指定一下node版本，这里用node20
+        - name: Setup Node
+          uses: actions/setup-node
+          with:
+            node-verson: 20
+            cache: npm
+        # 此项用户支持使用gitPage操作，如果不使用 不写即可
+        # - name: Setup Pages
+        #   uses: actions/configure-pages
+
+        # 下载依赖
+        - name: ⏬ Install dependencies
+          uses: npm install
+        # 打包构建
+        - name: 📦 Build
+          uses: npm run build
+        # 此项用于支持gitPage操作，用户上传dist文件夹
+        # - name: Upload dist
+        #   uses: actions/upload-pages-artifact@v1
+        #   with:
+        #     path: dist
+    
+
+
+
+  
