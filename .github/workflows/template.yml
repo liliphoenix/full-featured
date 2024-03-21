@@ -18,10 +18,15 @@ jobs:
           with:
             persist-credentials: false
         # 指定一下node版本，这里用node20
-        - name: Setup Node
-          uses: pnpm/action-setup@v3
+
+        - name: Setup pnpm
+          uses: pnpm/action-setup@v4
           with:
-            node-version: 20
+            version: 8
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 8
             cache: pnpm
         # 此项用户支持使用gitPage操作，如果不使用 不写即可
         # - name: Setup Pages
