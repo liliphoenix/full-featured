@@ -20,7 +20,7 @@ jobs:
         # 指定一下node版本，这里用node20
 
         - name: Setup pnpm
-          uses: pnpm/action-setup@v2
+          uses: pnpm/action-setup@v3
           with:
             version: 8
         - name: Setup Node
