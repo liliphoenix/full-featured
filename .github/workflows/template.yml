@@ -29,10 +29,10 @@ jobs:
 
         # 下载依赖
         - name: ⏬ Install dependencies
-          uses: npm install
+          run: npm install
         # 打包构建
         - name: 📦 Build
-          uses: npm run build
+          run: npm run build
         # 此项用于支持gitPage操作，用户上传dist文件夹
         # - name: Upload dist
         #   uses: actions/upload-pages-artifact@v1
