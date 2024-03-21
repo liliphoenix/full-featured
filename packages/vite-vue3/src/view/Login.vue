@@ -48,6 +48,7 @@ import { UploadOutlined } from '@ant-design/icons-vue'
 import { Button } from 'ant-design-vue'
 import { getNumberIP, getWeather } from 'api/index'
 import { useOssStore } from 'store/oss'
+import { getUserDevice } from 'utils/locationUtils'
 const store = useOssStore()
 const dataSource = ref([
   {
@@ -71,6 +72,7 @@ const columns = ref([
 onMounted(async () => {
   await store.getFileListOss()
   dataSource.value = store.list
+  console.log(getUserDevice())
 })
 // 🌸 post 测试
 const getNumberIPFun = async (): Promise<any> => {
