@@ -1,0 +1,21 @@
+{
+  "name": "full-featured-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "full-featured": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.30"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "full-featured-cli": "^1.0.0"
+  }
+}

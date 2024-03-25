@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1>{{ $t('hello') }}</h1>
+      <h1 class="bg-black">{{ $t('hello') }}</h1>
     </div>
     <Button type="primary" @click="getNumberIPFun">testAxios-Post</Button>
     <Button type="primary" @click="getWeatherFun">testAxios-Get</Button>
