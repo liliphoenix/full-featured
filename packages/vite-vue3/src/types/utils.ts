@@ -6,3 +6,8 @@ export type deviceType = () => {
   hardwarePlatform: string
   userAgent: string
 }
+export interface time {
+  h: string | number
+  s: string | number
+  m: string | number
+}

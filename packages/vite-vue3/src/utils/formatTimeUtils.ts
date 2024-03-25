@@ -1,3 +1,4 @@
+import type { time } from 'types/utils'
 // 🌸 13位时间戳格式转化为 yyyy/m/dd h:m Am
 export const getDateTime = (timeStamp): string => {
   const date = new Date(timeStamp)
@@ -12,6 +13,18 @@ export const getDateTime = (timeStamp): string => {
   const unit = h < 12 ? 'AM' : 'PM'
   h = h < 12 ? h : h - 12
   return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ' ' + unit
+}
+// 🌸 时间戳转换为h、m、s
+
+export const getClock = (timeStamp): time => {
+  const date = new Date(timeStamp)
+  let h: number | string = date.getHours()
+  h = h < 10 ? '0' + h : h
+  let m: number | string = date.getMinutes()
+  m = m < 10 ? '0' + m : m
+  let s: number | string = date.getSeconds()
+  s = s < 10 ? '0' + s : s
+  return { h, m, s }
 }
 
 /**
@@ -42,7 +55,7 @@ export const formatTimeMap = (seconds, type = 'modify'): any => {
  * ph（mm/dd/yy h:mm unit）  eg:11/30/2021  3:03pm
  * za (hh:mm dd/mm/yyyy)   eg:15:03  30/11/2021
  */
-export const getDateTime1 = (timeStamp, country): string => {
+export const getInternationalDateTime = (timeStamp, country): string => {
   const date = new Date(timeStamp)
   const y = date.getFullYear()
   let minute: number | string = date.getMinutes()
