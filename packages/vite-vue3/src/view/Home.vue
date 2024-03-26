@@ -4,7 +4,7 @@
       class="flex h-14 w-full items-center justify-between px-4 text-white"
     >
       <div class="flex items-center">
-        <img class="h-16 w-16" src="assets/images/logo.png" alt="" />
+        <img class="h-16 w-16" src="assets/logo.png" alt="" />
         <span class="text-xl"></span>
       </div>
       <div class="flex items-center text-black">
@@ -23,7 +23,7 @@
       </div>
     </header>
     <section class="flex h-auto w-full flex-col items-center justify-center">
-      <img class="h-96 w-96" src="assets/images/logo.png" alt="" />
+      <img class="h-96 w-96" src="assets/logo.png" alt="" />
       <div class="flex">
         <div class="mr-10 rounded-md bg-sky-500 px-5 py-2 text-white">文档</div>
         <div class="btn">Github</div>
