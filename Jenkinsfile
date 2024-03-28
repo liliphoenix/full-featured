@@ -14,8 +14,8 @@ pipeline{
         stage("project build"){
             steps {
                 sh 'npm i -g pnpm'
-                sh 'npm run install:template'
-                sh 'npm run build:template'
+                sh 'pnpm run install:template'
+                sh 'pnpm run build:template'
                 sh 'rm -rf node_modules'
             }
         }
