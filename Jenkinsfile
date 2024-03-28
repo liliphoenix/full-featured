@@ -8,7 +8,7 @@ pipeline{
             steps {
                 sh 'rm -rf public'
                 sh 'rm -rf logs'
-                git branch: 'main', credentialsId: '0ece98b6-d540-446d-864e-619921b95636', url: 'https://github.com/liliphoenix/full-featured.git'
+                git branch: 'main', credentialsId: '0ece98b6-d540-446d-864e-619921b95636', url: 'git@github.com:liliphoenix/full-featured.git
             }
         }
         stage("project build"){
