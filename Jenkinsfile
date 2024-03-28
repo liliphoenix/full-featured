@@ -15,7 +15,7 @@ pipeline{
             steps {
                 sh 'npm i -g pnpm'
                 sh 'pnpm run install:template'
-                sh 'npm run build:template'
+                sh 'npm run build:template --max-old-space-size=4096'
                 sh 'rm -rf node_modules'
             }
         }
@@ -30,5 +30,6 @@ pipeline{
                 sh 'docker run -p 80:80 --name xxx_v${BUILD_NUMBER} -d xxx:v${BUILD_NUMBER}'
             }
         }
+        
     }
 }
