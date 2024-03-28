@@ -74,7 +74,11 @@ export default defineConfig({
     })
   ],
   css: {
-    preprocessorOptions: {}
+    preprocessorOptions: {
+      scss: {
+        charset: false
+      }
+    }
   },
   resolve: {
     // TODO:踩坑：忘了在tsconfig.json中命名
