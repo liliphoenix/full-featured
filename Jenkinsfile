@@ -8,7 +8,7 @@ pipeline{
             steps {
                 sh 'sudo rm -rf public'
                 sh 'sudo rm -rf logs'
-                git branch: 'master', credentialsId: '0ece98b6-d540-446d-864e-619921b95636', url: 'git@github.com:liliphoenix/full-featured.git'
+                git branch: 'main', credentialsId: '0ece98b6-d540-446d-864e-619921b95636', url: 'git@github.com:liliphoenix/full-featured.git'
             }
         }
         stage("project build"){
