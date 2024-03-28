@@ -6,8 +6,8 @@ pipeline{
     stages{
         stage("pull"){
             steps {
-                sh 'sudo rm -rf public'
-                sh 'sudo rm -rf logs'
+                sh 'rm -rf public'
+                sh 'rm -rf logs'
                 git branch: 'main', credentialsId: '0ece98b6-d540-446d-864e-619921b95636', url: 'git@github.com:liliphoenix/full-featured.git'
             }
         }
@@ -15,7 +15,7 @@ pipeline{
             steps {
                 sh 'npm install'
                 sh 'npm run build'
-                sh 'sudo rm -rf node_modules'
+                sh 'rm -rf node_modules'
             }
         }
         stage("docker build"){
