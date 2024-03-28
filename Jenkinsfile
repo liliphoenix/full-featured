@@ -13,8 +13,8 @@ pipeline{
         }
         stage("project build"){
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                sh 'npm run install:template'
+                sh 'npm run build:template'
                 sh 'rm -rf node_modules'
             }
         }
