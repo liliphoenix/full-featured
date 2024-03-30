@@ -7,7 +7,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginRequire from 'vite-plugin-require'
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
+// import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 // import importToCDN from "vite-plugin-cdn-import";
 import svgLoader from 'vite-svg-loader'
 // 🌸 vite压缩图片资源
@@ -50,24 +50,24 @@ export default defineConfig({
     }),
     // TODO: 踩坑：require使用vite-plugin-require插件适配
     // @ts-expect-error
-    vitePluginRequire.default(),
-    chunkSplitPlugin({
-      // TODO: 踩坑：包分离优化使用正则 ，用数组会报错
-      strategy: 'default',
-      customSplitting: {
-        // `react` and `react-dom` 会被打包到一个名为`render-vendor`的 chunk 里面(包括它们的一些依赖，如 object-assign)
-        'vue-vendor': [/node_modules\/vue/],
-        'vue-third-party': [
-          /node_modules\/vue-router/,
-          /node_modules\/lodash*/,
-          /node_modules\/axios/
-        ],
-        pinia: [/node_modules\/pinia/],
-        antd: [/node_modules\/ant-design-vue/],
-        'ali-oss': [/node_modules\/ali-oss/]
-        // 源码中 utils 目录的代码都会打包进 `utils` 这个 chunk 中
-      }
-    })
+    vitePluginRequire.default()
+    // chunkSplitPlugin({
+    //   // TODO: 踩坑：包分离优化使用正则 ，用数组会报错
+    //   strategy: 'default',
+    //   customSplitting: {
+    //     // `react` and `react-dom` 会被打包到一个名为`render-vendor`的 chunk 里面(包括它们的一些依赖，如 object-assign)
+    //     'vue-vendor': [/node_modules\/vue/],
+    //     'vue-third-party': [
+    //       /node_modules\/vue-router/,
+    //       /node_modules\/lodash*/,
+    //       /node_modules\/axios/
+    //     ],
+    //     pinia: [/node_modules\/pinia/],
+    //     antd: [/node_modules\/ant-design-vue/],
+    //     'ali-oss': [/node_modules\/ali-oss/]
+    //     // 源码中 utils 目录的代码都会打包进 `utils` 这个 chunk 中
+    //   }
+    // })
     // // TODO: polyfills 垫片
     // legacy({
     //   targets: ['ie >= 11']
