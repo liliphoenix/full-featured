@@ -13,7 +13,7 @@ import svgLoader from 'vite-svg-loader'
 // 🌸 vite压缩图片资源
 // 🌸 icon生成雪碧图压缩
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import legacy from '@vitejs/plugin-legacy'
+// import legacy from '@vitejs/plugin-legacy'
 import mkcert from 'vite-plugin-mkcert'
 // const externalGlobalsObj = {
 //   vue: 'Vue',
@@ -67,11 +67,11 @@ export default defineConfig({
         'ali-oss': [/node_modules\/ali-oss/]
         // 源码中 utils 目录的代码都会打包进 `utils` 这个 chunk 中
       }
-    }),
-    // TODO: polyfills 垫片
-    legacy({
-      targets: ['ie >= 11']
     })
+    // // TODO: polyfills 垫片
+    // legacy({
+    //   targets: ['ie >= 11']
+    // })
   ],
   css: {
     preprocessorOptions: {
