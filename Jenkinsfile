@@ -13,7 +13,7 @@ pipeline{
         }
         stage("project build"){
             steps {
-                sh 'JENKINS_NODE_COOKIE=dontkillme'
+                sh '''JENKINS_NODE_COOKIE=dontkillme'''
                 sh 'npm i -g pnpm'
                 sh 'pnpm run install:template'
                 sh 'npm run build:template --max-old-space-size=4096'
