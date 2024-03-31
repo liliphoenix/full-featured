@@ -22,7 +22,7 @@ pipeline{
         }
         stage("docker build"){
             steps {
-                sh 'docker build -t full-featured:v1.0 -f Dockerfile .'
+                sh 'docker build -t full-featured:v1.0 -f home/jenkins_home/workspace/Full-Featrued-Vite@2/Dockerfile .'
             }
         }
         stage("docker run"){
