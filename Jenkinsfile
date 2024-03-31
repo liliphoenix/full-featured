@@ -18,17 +18,17 @@ pipeline{
                 sh 'pnpm run install:template'
                 sh 'npm run build:template --max-old-space-size=4096'
                 sh 'rm -rf node_modules'
-            }
+            } 
         }
         stage("docker build"){
             steps {
-                sh 'docker build -t xxx:v${BUILD_NUMBER} . '
+                sh 'docker build -t full-featured:v1.0 . '
             }
         }
         stage("docker run"){
             steps {
                 sh 'docker stop $(docker ps -a -q)'
-                sh 'docker run -p 80:80 --name xxx_v${BUILD_NUMBER} -d xxx:v${BUILD_NUMBER}'
+                sh 'docker run -p 80:80 --name full-featured:v1.0 -d full-featured:v1.0'
             }
         }
         
