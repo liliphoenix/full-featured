@@ -22,7 +22,7 @@ pipeline{
         }
         stage("docker build"){
             steps {
-                sh 'docker build -t full-featured:v1.0 . '
+                sh 'docker build -t full-featured:v1.0 -f Dockerfile .'
             }
         }
         stage("docker run"){
