@@ -5,7 +5,7 @@
 > vue3 个人功能丰富的工作流框架 基于vite-vue3脚手架
 > 首次搭建自己的工作流，实现代码风格 提交规范的配置 🎉🎉🎉
 
-| 导管                 | $1     |
+| 导管 | $1 |
 
 ## v1.0任务目标
 
@@ -22,20 +22,28 @@
   - [x] ali-oss文件分片上传 文件下载 文件列表显示
 
 - [ ] 通用组件的封装（第一期基于antd进行封装，以后开发bobi-ui后再引入组件库）
+
   - [ ] 二次封装message
   - [ ] popup弹窗
+
 - [x] pinia 状态管理器
+
   - [ ] [可选] 获取设备的基本信息？
   - [ ] 获取用户语言设置多语言
+
 - [ ] 打包优化（有待学习vite）vite插件集成
+
   - [x] 分包策略 vue全家桶放一块 ali-oss-sdk单分chunk因为体积太大 剩下的
   - [x] treeShaking es6自带 去除掉没有用到的api
   - [x] gzip
   - [ ] cdn加速
   - [ ] 图片压缩
+
 - [ ] sh命令行操作
 - [ ] vue-router
+
   - [ ] 权限控制？
+
 - [ ] 多环境变量
 - [ ] 美化md文档
 - [ ] vitePress编写项目文档
@@ -45,13 +53,7 @@
 
 #### 项目运行
 
-
-
-
 #### 项目运行#### 项目运行#### 项目运行#### 项目运行#### 项目运行
-
-
-
 
 `npm install`
 `npm run dev`
@@ -125,3 +127,5 @@ vitepress部署好以后别忘了在 配置文件配置base路径 要不然资�
 /vite-full-featured/ 像这样
 
 pnpm i --frozen-lockfile === npm CI
+
+pmpm版本落后，要及时更新lockfileVersion，新版本的pnpm会拒绝落后版本的pnpm产生lockfile
