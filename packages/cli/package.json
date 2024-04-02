@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "commander": "^12.0.0",
+    "full-featured": "^1.0.0",
     "full-featured-cli": "^1.0.0"
   }
 }

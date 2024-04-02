@@ -1,8 +1,13 @@
 #!/usr/bin/env node
-const { Command } = require("commander");
-const program = new Command();
-program.option("-d", "666");
+
+const { program } = require("commander");
+
 program
-  .name("string-util")
-  .description("CLI to some JavaScript string utilities")
-  .version("0.8.0");
+  .version("1.0.0")
+  .description("A simple CLI tool")
+  .option("-n, --name <name>", "Your name")
+  .action((options) => {
+    console.log(`Hello, ${options.name || "World"}!`);
+  });
+
+program.parse(process.argv);
