@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "commander": "^12.0.0",
+    "download-git-repo": "^3.0.2",
     "full-featured": "^1.0.0",
-    "full-featured-cli": "^1.0.0"
+    "full-featured-cli": "^1.0.0",
+    "minimist": "^1.2.8"
   }
 }
