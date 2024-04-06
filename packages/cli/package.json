@@ -17,10 +17,8 @@
   "dependencies": {
     "@inquirer/prompts": "^4.3.1",
     "commander": "^12.0.0",
-    "download-git-repo": "^3.0.2",
     "fs-extra": "^9.0.0",
-    "full-featured": "^1.0.0",
-    "full-featured-cli": "^1.0.0",
+    "inquirer": "^8.2.0",
     "minimist": "^1.2.8"
   }
 }
