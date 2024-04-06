@@ -1,6 +1,6 @@
 {
   "name": "full-featured-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -18,8 +18,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^20.11.30",
-    "rollup": "^4.14.0",
-    "rollup-plugin-delete": "^2.0.0"
+    "rollup": "^4.14.0"
   },
   "dependencies": {
     "@inquirer/prompts": "^4.3.1",
