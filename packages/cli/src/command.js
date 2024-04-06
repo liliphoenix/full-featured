@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const prompt = inquirer.createPromptModule();
-
+// const argv = require("minimist")(process.argv.slice(2));
+const init = require("./create");
 // 🌸 定义问题数组
 const questions = [
   {
@@ -27,21 +28,42 @@ const questions = [
     default: "Tailwind CSS",
   },
   {
-    type: "checkbox",
-    name: "lint",
-    message: "Choose your code specification and code style checker portfolio",
+    type: "confirm",
+    name: "aliOss",
     prefix: "🌈",
-    choices: [
-      { name: "Eslint + Prettier", checked: true },
-      {
-        name: "One-click Code Submission Tool (Cz+Commitlint+Git-Emoji)",
-        checked: true,
-      },
-      { name: "Stylelint (It didn't work when using Tailwind Css)" },
-    ],
+    message:
+      "Specifies whether to use the file upload function encapsulated by Alibaba Cloud OSS",
+    default: true,
   },
 ];
 const command = () => {
-  prompt(questions).then((answers) => {});
+  prompt(questions).then((answers) => {
+    console.log(answers);
+    const path = `./${answers.name}`;
+    let template;
+    const lintStyle = (tempPrefix) => {
+      switch (answers.css) {
+        case "Tailwind CSS":
+          template = `${tempPrefix}-tailwind`;
+          break;
+        case "Scss":
+          template = `${tempPrefix}-scss`;
+          break;
+        case "Less":
+          template = `${tempPrefix}-less`;
+          break;
+      }
+      if (answers.aliOss) {
+        template += "-ali";
+      }
+      console.log(template);
+    };
+    if (answers.framework == "Vue+Ts") {
+      lintStyle("vite-vue3");
+    } else {
+      lintStyle("vite-react");
+    }
+    // init(argv._[0], argv.temp);
+  });
 };
 module.exports = command;
