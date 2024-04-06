@@ -8,12 +8,10 @@ const init = async function (tarPath, temp) {
   const targetDir = tarPath ? tarPath : "./";
   const targetPath = path.join(cwd, targetDir);
   // 🌸 获取目标模版
-  const tempDir = path.join(__dirname, `../../${temp}`);
-  console.log(targetPath);
+  const tempDir = path.join(__dirname, `../template/${temp}`);
   // 🌸 确保目标文件夹存在,也就是说如果不存在就创建一个
   await fs.ensureDir(targetPath);
   fs.readdir(targetPath, (err, files) => {
-    console.log(files);
     if (files.length > 0) {
       console.log("\n📁 Such directory is not empty!\n");
       throw Error("Such directory is not empty!");

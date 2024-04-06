@@ -38,7 +38,6 @@ const questions = [
 ];
 const command = () => {
   prompt(questions).then((answers) => {
-    console.log(answers);
     const path = `./${answers.name}`;
     let template;
     const lintStyle = (tempPrefix) => {
@@ -63,7 +62,7 @@ const command = () => {
     } else {
       lintStyle("vite-react");
     }
-    // init(argv._[0], argv.temp);
+    init(path, template);
   });
 };
 module.exports = command;
