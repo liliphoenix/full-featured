@@ -17,9 +17,9 @@ export const basicRoutes: routeRaw[] = [
     ]
   },
   {
-    name: 'login',
-    path: '/login',
-    component: import('view/Login.vue'),
+    name: 'test',
+    path: '/test',
+    component: import('view/TestPage.vue'),
     meta: {
       role: 0
     }

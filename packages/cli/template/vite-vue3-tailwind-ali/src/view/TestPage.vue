@@ -1,32 +1,56 @@
 <template>
-  <div>
-    <div>
-      <h1 class="bg-black">{{ $t('hello') }}</h1>
-    </div>
-    <Button type="primary" @click="getNumberIPFun">testAxios-Post</Button>
-    <Button type="primary" @click="getWeatherFun">testAxios-Get</Button>
+  <div class="flex flex-col">
+    <Button class="btn" type="primary" @click="getNumberIPFun"
+      >testAxios-Post</Button
+    >
+    <Button class="btn" type="primary" @click="getWeatherFun"
+      >testAxios-Get</Button
+    >
     <!-- <a-upload name="file" action="" :custom-request="uploadFile"> -->
-    <input type="file" name="Click to Upload (normal)" @change="uploadFile" />
-    <a-upload name="file" action="" :custom-request="uploadFileMultipart">
+    <input
+      class="m-2"
+      type="file"
+      name="Click to Upload (normal)"
+      @change="uploadFile"
+    />
+    <a-upload
+      class="btn"
+      name="file"
+      action=""
+      :custom-request="uploadFileMultipart"
+    >
       <a-button>
         <upload-outlined></upload-outlined>
         Click to Upload (multipart)
       </a-button>
     </a-upload>
-    <a-upload name="file" action="" :custom-request="uploadFileResume">
+    <a-upload
+      class="btn"
+      name="file"
+      action=""
+      :custom-request="uploadFileResume"
+    >
       <a-button>
         <upload-outlined></upload-outlined>
         Click to Upload (resume)
       </a-button>
     </a-upload>
-    <a-table :data-source="dataSource" :columns="columns" />
-    <a-input-search
-      v-model:value="filename"
-      placeholder="input search text"
-      enter-button="download"
-      size="large"
-      @search="downloadFile"
+    <a-table
+      class="m-2 w-80"
+      :pagination="false"
+      :data-source="dataSource"
+      :columns="columns"
     />
+
+    <div class="m-2 w-80">
+      <a-input-search
+        v-model:value="filename"
+        placeholder="input search text"
+        enter-button="download"
+        size="large"
+        @search="downloadFile"
+      />
+    </div>
     <SvgCom name="vite-test1"></SvgCom>
     <SvgCom name="vite-test2"></SvgCom>
   </div>
@@ -106,4 +130,8 @@ const getFileList = async (): Promise<any> => {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style scoped>
+.btn {
+  @apply m-2 h-7 w-28;
+}
+</style>

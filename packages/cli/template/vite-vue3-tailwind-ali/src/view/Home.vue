@@ -7,7 +7,7 @@
         <img class="h-16 w-16" src="assets/logo.png" alt="" />
         <span class="text-xl"></span>
       </div>
-      <div class="flex items-center text-black">
+      <div class="flex w-72 items-center text-black">
         <div class="mr-5">
           <a-select v-model:value="lang" class="w-24" @change="handleChange">
             <a-select-option :value="$t('zh')">{{ $t('zh') }}</a-select-option>
@@ -32,10 +32,20 @@
     <section class="flex h-auto w-full flex-col items-center justify-center">
       <img class="h-96 w-96" src="assets/logo.png" alt="" />
       <div class="flex">
-        <div class="mr-10 rounded-md bg-sky-500 px-5 py-2 text-white">
-          {{ $t('doc') }}
+        <div class="btn mr-10">
+          <a
+            target="_blank"
+            href="https://github.com/liliphoenix/full-featured"
+          >
+            {{ $t('doc') }}
+          </a>
         </div>
-        <div class="btn">Github</div>
+        <div class="btn mr-10">
+          <a target="_blank" href="https://github.com/liliphoenix/full-featured"
+            >Github</a
+          >
+        </div>
+        <div class="btn" @click="jump">{{ $t('test') }}</div>
       </div>
     </section>
     <footer></footer>
@@ -48,6 +58,7 @@ import { getClock } from 'utils/formatTimeUtils'
 import { getNumberIP, getWeather } from 'api/index'
 import i18n from 'i18n/index'
 import { useI18n } from 'vue-i18n'
+import { router } from '@/router'
 const { locale } = useI18n()
 const t = i18n.global.t
 // const $t = getVueGlobalValue().$trans()
@@ -76,6 +87,12 @@ const handleChange = (value): void => {
   }
 }
 
+// 🌸 跳转
+
+const jump = (): void => {
+  router.push('/test')
+}
+
 // 🌸 post 测试
 const getNumberIPFun = async (): Promise<any> => {
   const res = await getNumberIP({
@@ -100,6 +117,6 @@ const formatTime = (): void => {
 
 <style scoped>
 .btn {
-  @apply rounded-md bg-sky-500 px-5 py-2 text-white;
+  @apply cursor-pointer rounded-md bg-sky-500 px-5 py-2 text-white hover:bg-sky-600;
 }
 </style>
