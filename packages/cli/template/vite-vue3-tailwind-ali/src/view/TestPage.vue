@@ -1,11 +1,26 @@
 <template>
   <div class="flex flex-col">
-    <Button class="btn" type="primary" @click="getNumberIPFun"
-      >testAxios-Post</Button
-    >
-    <Button class="btn" type="primary" @click="getWeatherFun"
-      >testAxios-Get</Button
-    >
+    <div>
+      <Button class="btn" type="primary" @click="getNumberIPFun">{{
+        $t('postTest')
+      }}</Button>
+      <div class="m-2 w-80">
+        <a-input-search
+          v-model:value="phoneNumber"
+          :placeholder="$t('inputNumber')"
+          :enter-button="$t('search')"
+          size="large"
+          @search="getNumberIPFun"
+        />
+      </div>
+      <span class="m-2">{{ $t('phoneNumberCity') }}{{ postTest }}</span>
+    </div>
+    <div class="m-2 w-80">
+      <Button class="btn" type="primary" @click="getWeatherFun">{{
+        $t('getTest')
+      }}</Button>
+      <div class="m-2">{{ $t('weatherFromBeijing') }}{{ getTest }}</div>
+    </div>
     <!-- <a-upload name="file" action="" :custom-request="uploadFile"> -->
     <input
       class="m-2"
@@ -21,7 +36,7 @@
     >
       <a-button>
         <upload-outlined></upload-outlined>
-        Click to Upload (multipart)
+        {{ $t('uploadText') }} (multipart)
       </a-button>
     </a-upload>
     <a-upload
@@ -32,7 +47,7 @@
     >
       <a-button>
         <upload-outlined></upload-outlined>
-        Click to Upload (resume)
+        {{ $t('uploadText') }}(resume)
       </a-button>
     </a-upload>
     <a-table
@@ -45,14 +60,20 @@
     <div class="m-2 w-80">
       <a-input-search
         v-model:value="filename"
-        placeholder="input search text"
-        enter-button="download"
+        :placeholder="$t('downloadText')"
+        :enter-button="$t('download')"
         size="large"
         @search="downloadFile"
       />
     </div>
     <SvgCom name="vite-test1"></SvgCom>
     <SvgCom name="vite-test2"></SvgCom>
+    <div
+      class="fixed right-2 top-2 cursor-pointer rounded-xl bg-sky-600 p-2 text-white"
+      @click="jump"
+    >
+      Back
+    </div>
   </div>
 </template>
 
@@ -63,6 +84,7 @@ import { Button } from 'ant-design-vue'
 import { getNumberIP, getWeather } from 'api/index'
 import { useOssStore } from 'store/oss'
 import { getUserDevice } from 'utils/locationUtils'
+import { router } from '@/router'
 const store = useOssStore()
 const dataSource = ref([
   {
@@ -83,6 +105,9 @@ const columns = ref([
     key: 'url'
   }
 ])
+const postTest = ref()
+const getTest = ref()
+const phoneNumber = ref()
 onMounted(async () => {
   await store.getFileListOss()
   dataSource.value = store.list
@@ -91,16 +116,17 @@ onMounted(async () => {
 // 🌸 post 测试
 const getNumberIPFun = async (): Promise<any> => {
   const res = await getNumberIP({
-    mobile: 15588741204
+    mobile: phoneNumber.value
   })
+  postTest.value = res.data.city
   console.log(res.data)
 }
 // 🌸 get测试
 const getWeatherFun = async (): Promise<any> => {
   const res = await getWeather({
-    areacode: 110101
+    areacode: 101010100
   })
-  console.log(res.data)
+  getTest.value = res.result.realtime.text
 }
 // 🌸 分片上传
 const uploadFileMultipart = async (item): Promise<any> => {
@@ -121,12 +147,20 @@ const uploadFileResume = async (item): Promise<any> => {
 }
 // 🌸 文件下载
 const downloadFile = async (): Promise<any> => {
-  await store.getFileOss(filename.value)
+  try {
+    await store.getFileOss(filename.value)
+  } catch (error) {
+    console.log(error)
+  }
 }
 // 🌸 获取文件列表
 const getFileList = async (): Promise<any> => {
   const list = await store.getFileListOss()
   dataSource.value = list.objects
+}
+// 🌸 跳转
+const jump = (): void => {
+  router.push('/home')
 }
 </script>
 
