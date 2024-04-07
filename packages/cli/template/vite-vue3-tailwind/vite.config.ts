@@ -6,12 +6,11 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginRequire from 'vite-plugin-require'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
+import legacy from '@vitejs/plugin-legacy'
 import svgLoader from 'vite-svg-loader'
 // 🌸 vite压缩图片资源
 // 🌸 icon生成雪碧图压缩
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import legacy from '@vitejs/plugin-legacy'
-
 const env =
   loadEnv('development', process.cwd()).VITE_ENV === 'development'
     ? loadEnv('development', process.cwd())
@@ -20,6 +19,8 @@ const env =
 export default defineConfig({
   plugins: [
     vue(),
+    // TODO: http2 优化
+
     svgLoader(),
     // TODO: svg变成雪碧图
     createSvgIconsPlugin({
@@ -101,6 +102,11 @@ export default defineConfig({
         target: env.VITE_TEST_HOST,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/upload': {
+        target: env.VITE_TEST_HOST_UPLOAD,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/upload/, '')
       }
     }
   },
@@ -110,6 +116,9 @@ export default defineConfig({
     outDir: './dist',
     assetsDir: './static',
     // 单文件or內联临界值
-    assetsInlineLimit: 8 * 1024
+    assetsInlineLimit: 8 * 1024,
+    rollupOptions: {
+      // external: Object.keys(externalGlobalsObj)
+    }
   }
 })

@@ -19,7 +19,7 @@ export const getVueGlobalValue: () => globalProperties | null = () => {
 }
 
 /**
- * 🌸 文件
+ * 🌸 文件s
  * @params url 文件下载地址
  * @params filename 文件名称
  */

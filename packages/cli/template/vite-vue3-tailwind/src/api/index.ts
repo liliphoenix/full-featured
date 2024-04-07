@@ -18,7 +18,7 @@ const request = (config): any => {
 }
 
 /* 
-* get方法测试
+* get方法
 * @params url 
 * @params method 传入的参数
 * @params params or query 传入的参数
@@ -31,13 +31,13 @@ export const getWeather = (params = {}): dataType => {
     method: 'get',
     params,
     selfHeader: {
-      'X-APISpace-Token	': 'yzhc6eziyefcvr8o1luh8wl1rifkka1u'
+      'X-APISpace-Token	': 'n30k9jlfyucfa7k4ogr58xeuxjb3ghqh'
     }
   })
 }
 
 /* 
-* post方法测试
+* post方法
 * @params url 
 * @params method 传入的参数
 * @params params or query 传入的参数
@@ -51,7 +51,7 @@ export const getNumberIP = (data = {}): dataType => {
     data,
     selfHeader: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'X-APISpace-Token	': 'yzhc6eziyefcvr8o1luh8wl1rifkka1u'
+      'X-APISpace-Token	': 'n30k9jlfyucfa7k4ogr58xeuxjb3ghqh'
     }
   })
 }
