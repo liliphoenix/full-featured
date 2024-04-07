@@ -27,18 +27,8 @@
       size="large"
       @search="downloadFile"
     />
-
-    <SvgCom name="logo-a"></SvgCom>
-    <img src="assets/images/pit1.png" alt="" />
-    <img src="assets/images/pit1copy.png" alt="" />
-    <img src="assets/images/jpg1.jpeg" alt="" />
-    <img src="assets/images/jpg2.jpg" alt="" />
-    <!-- <a-upload name="file" action="" :custom-request="streamUploadFile">
-      <a-button>
-        <upload-outlined></upload-outlined>
-        Click to Upload (stream)
-      </a-button>
-    </a-upload> -->
+    <SvgCom name="vite-test1"></SvgCom>
+    <SvgCom name="vite-test2"></SvgCom>
   </div>
 </template>
 
@@ -114,10 +104,6 @@ const getFileList = async (): Promise<any> => {
   const list = await store.getFileListOss()
   dataSource.value = list.objects
 }
-
-// const streamUploadFile = async (item): Promise<any> => {
-//   await streamUploadFileOss(item)
-// }
 </script>
 
 <style lang="sass" scoped></style>

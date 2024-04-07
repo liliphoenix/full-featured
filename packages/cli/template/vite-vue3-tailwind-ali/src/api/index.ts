@@ -65,6 +65,7 @@ export const getNumberIP = (data = {}): dataType => {
 
 /* 
 * ali-oss + nest.js 文件上传方法
+* 初始化参数
 * @params url 
 * @params method 传入的参数
 * @params params or query 传入的参数

@@ -2,22 +2,15 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // TODO:踩坑 使用 import * as path 引入
 import * as path from 'path'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginRequire from 'vite-plugin-require'
-// import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
-// import importToCDN from "vite-plugin-cdn-import";
+import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
+import legacy from '@vitejs/plugin-legacy'
 import svgLoader from 'vite-svg-loader'
 // 🌸 vite压缩图片资源
 // 🌸 icon生成雪碧图压缩
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-// import legacy from '@vitejs/plugin-legacy'
-// const externalGlobalsObj = {
-//   vue: 'Vue',
-//   'vue-router': 'router'
-// }
-
 const env =
   loadEnv('development', process.cwd()).VITE_ENV === 'development'
     ? loadEnv('development', process.cwd())
@@ -33,7 +26,6 @@ export default defineConfig({
     createSvgIconsPlugin({
       iconDirs: [path.join(__dirname, 'src/assets/svgs')]
     }),
-    vueJsx(),
     Components({
       resolvers: [
         AntDesignVueResolver({
@@ -43,28 +35,27 @@ export default defineConfig({
     }),
     // TODO: 踩坑：require使用vite-plugin-require插件适配
     // @ts-expect-error
-    vitePluginRequire.default()
-    // chunkSplitPlugin({
-    //   // TODO: 踩坑：包分离优化使用正则 ，用数组会报错
-    //   strategy: 'default',
-    //   customSplitting: {
-    //     // `react` and `react-dom` 会被打包到一个名为`render-vendor`的 chunk 里面(包括它们的一些依赖，如 object-assign)
-    //     'vue-vendor': [/node_modules\/vue/],
-    //     'vue-third-party': [
-    //       /node_modules\/vue-router/,
-    //       /node_modules\/lodash*/,
-    //       /node_modules\/axios/
-    //     ],
-    //     pinia: [/node_modules\/pinia/],
-    //     antd: [/node_modules\/ant-design-vue/],
-    //     'ali-oss': [/node_modules\/ali-oss/]
-    //     // 源码中 utils 目录的代码都会打包进 `utils` 这个 chunk 中
-    //   }
-    // })
-    // // TODO: polyfills 垫片
-    // legacy({
-    //   targets: ['ie >= 11']
-    // })
+    vitePluginRequire.default(),
+    chunkSplitPlugin({
+      // TODO: 踩坑：包分离优化使用正则 ，用数组会报错
+      strategy: 'default',
+      customSplitting: {
+        // `react` and `react-dom` 会被打包到一个名为`render-vendor`的 chunk 里面(包括它们的一些依赖，如 object-assign)
+        'vue-vendor': [/node_modules\/vue/],
+        'vue-third-party': [
+          /node_modules\/vue-router/,
+          /node_modules\/lodash*/,
+          /node_modules\/axios/
+        ],
+        pinia: [/node_modules\/pinia/],
+        antd: [/node_modules\/ant-design-vue/],
+        'ali-oss': [/node_modules\/ali-oss/]
+      }
+    }),
+    // TODO: polyfills 垫片
+    legacy({
+      targets: ['ie >= 11']
+    })
   ],
   css: {
     preprocessorOptions: {

@@ -8,24 +8,33 @@
         <span class="text-xl"></span>
       </div>
       <div class="flex items-center text-black">
-        <div class="mr-5">{{}}</div>
-        <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-          hour
-        }}</span>
-        :
-        <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-          min
-        }}</span>
-        :
-        <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-          second
-        }}</span>
+        <div class="mr-5">
+          <a-select v-model:value="lang" class="w-24" @change="handleChange">
+            <a-select-option :value="$t('zh')">{{ $t('zh') }}</a-select-option>
+            <a-select-option :value="$t('en')">{{ $t('en') }}</a-select-option>
+          </a-select>
+        </div>
+        <div>
+          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
+            hour
+          }}</span>
+          :
+          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
+            min
+          }}</span>
+          :
+          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
+            second
+          }}</span>
+        </div>
       </div>
     </header>
     <section class="flex h-auto w-full flex-col items-center justify-center">
       <img class="h-96 w-96" src="assets/logo.png" alt="" />
       <div class="flex">
-        <div class="mr-10 rounded-md bg-sky-500 px-5 py-2 text-white">文档</div>
+        <div class="mr-10 rounded-md bg-sky-500 px-5 py-2 text-white">
+          {{ $t('doc') }}
+        </div>
         <div class="btn">Github</div>
       </div>
     </section>
@@ -37,11 +46,16 @@
 import { ref, onMounted } from 'vue'
 import { getClock } from 'utils/formatTimeUtils'
 import { getNumberIP, getWeather } from 'api/index'
-
+import i18n from 'i18n/index'
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+const t = i18n.global.t
+// const $t = getVueGlobalValue().$trans()
 const hour = ref()
 const min = ref()
 const second = ref()
 const weather = ref()
+const lang = ref(t('en'))
 onMounted(() => {
   formatTime()
   getNumberIPFun()
@@ -50,6 +64,18 @@ onMounted(() => {
     formatTime()
   })
 })
+// 🌸 语言切换
+const handleChange = (value): void => {
+  if (value === '中文' || value === 'Chinese') {
+    locale.value = 'zh'
+    lang.value = t('zh')
+  }
+  if (value === '英语' || value === 'English') {
+    locale.value = 'en'
+    lang.value = t('en')
+  }
+}
+
 // 🌸 post 测试
 const getNumberIPFun = async (): Promise<any> => {
   const res = await getNumberIP({
