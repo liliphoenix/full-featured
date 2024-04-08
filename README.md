@@ -1,5 +1,5 @@
 <div style="display:flex;justify-content: center;align-items: center;">
- <img style="width:200px;" src="./public/logo.png"></img>
+ <img style="width:200px;" src="https://github.com/liliphoenix/full-featured/blob/main/public/logo.png"></img>
 </div>
 <div style="display:flex;justify-content: center;align-items: center;">
 <a href="https://www.npmjs.com/package/full-featured-cli">
