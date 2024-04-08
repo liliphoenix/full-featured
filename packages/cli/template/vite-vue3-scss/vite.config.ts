@@ -60,7 +60,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        charset: false
+        additionalData: '@import "@/assets/scss/base.scss";'
       }
     }
   },

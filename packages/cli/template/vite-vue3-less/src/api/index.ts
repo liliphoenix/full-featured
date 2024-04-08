@@ -13,13 +13,7 @@ const requestInt = new Request({
   baseURL: '/api',
   timeout: 3000
 })
-const uploadInt = new Request({
-  baseURL: '/upload',
-  timeout: 3000
-})
-const upload = (config): any => {
-  return uploadInt.request(config)
-}
+
 const request = (config): any => {
   return requestInt.request(config)
 }
@@ -59,26 +53,6 @@ export const getNumberIP = (data = {}): dataType => {
     selfHeader: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-APISpace-Token	': 'n30k9jlfyucfa7k4ogr58xeuxjb3ghqh'
-    }
-  })
-}
-
-/* 
-* ali-oss + nest.js 文件上传方法
-* 初始化参数
-* @params url 
-* @params method 传入的参数
-* @params params or query 传入的参数
-
-*/
-export const initOssApi = (params = {}): dataType => {
-  return upload({
-    url: '',
-    method: 'get',
-    params,
-    selfHeader: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'X-APISpace-Token	': 'yzhc6eziyefcvr8o1luh8wl1rifkka1u'
     }
   })
 }

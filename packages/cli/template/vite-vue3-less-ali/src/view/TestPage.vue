@@ -1,39 +1,29 @@
 <template>
-  <div class="flex flex-col">
+  <div class="container">
     <div>
       <Button class="btn" type="primary" @click="getNumberIPFun">{{
         $t('postTest')
       }}</Button>
-      <div class="m-2 w-80">
+      <div class="search-container">
         <a-input-search
-          v-model:value="phoneNumber"
+          v-model="phoneNumber"
           :placeholder="$t('inputNumber')"
           :enter-button="$t('search')"
           size="large"
           @search="getNumberIPFun"
         />
       </div>
-      <span class="m-2">{{ $t('phoneNumberCity') }}{{ postTest }}</span>
+      <span>{{ $t('phoneNumberCity') }}{{ postTest }}</span>
     </div>
-    <div class="m-2 w-80">
+    <div>
       <Button class="btn" type="primary" @click="getWeatherFun">{{
         $t('getTest')
       }}</Button>
-      <div class="m-2">{{ $t('weatherFromBeijing') }}{{ getTest }}</div>
+      <div>{{ $t('weatherFromBeijing') }}{{ getTest }}</div>
     </div>
     <!-- <a-upload name="file" action="" :custom-request="uploadFile"> -->
-    <input
-      class="m-2"
-      type="file"
-      name="Click to Upload (normal)"
-      @change="uploadFile"
-    />
-    <a-upload
-      class="btn"
-      name="file"
-      action=""
-      :custom-request="uploadFileMultipart"
-    >
+    <input type="file" name="Click to Upload (normal)" @change="uploadFile" />
+    <a-upload name="file" action="" :custom-request="uploadFileMultipart">
       <a-button>
         <upload-outlined></upload-outlined>
         {{ $t('uploadText') }} (multipart)
@@ -50,16 +40,12 @@
         {{ $t('uploadText') }}(resume)
       </a-button>
     </a-upload>
-    <a-table
-      class="m-2 w-80"
-      :pagination="false"
-      :data-source="dataSource"
-      :columns="columns"
-    />
+    <a-table :pagination="false" :data-source="dataSource" :columns="columns" />
 
-    <div class="m-2 w-80">
+    <div>
       <a-input-search
-        v-model:value="filename"
+        class="search-container"
+        v-model="filename"
         :placeholder="$t('downloadText')"
         :enter-button="$t('download')"
         size="large"
@@ -69,7 +55,7 @@
     <SvgCom name="vite-test1"></SvgCom>
     <SvgCom name="vite-test2"></SvgCom>
     <div
-      class="fixed right-2 top-2 cursor-pointer rounded-xl bg-sky-600 p-2 text-white"
+      class="cloud fixed right-2 top-2 cursor-pointer rounded-xl bg-sky-600 p-2 text-white"
       @click="jump"
     >
       Back
@@ -164,8 +150,30 @@ const jump = (): void => {
 }
 </script>
 
-<style scoped>
-.btn {
-  @apply m-2 h-7 w-28;
+<style lang="less" scoped>
+.container {
+  .flex-col();
+  div,
+  input,
+  span,
+  button {
+    margin: 5px;
+  }
+  .search-container {
+    width: 400px;
+  }
+  .cloud {
+    position: fixed;
+    cursor: pointer;
+    right: 20px;
+    top: 20px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    color: white;
+    background: #3875f6;
+  }
+  .cloud:hover {
+    background: #1856dc;
+  }
 }
 </style>

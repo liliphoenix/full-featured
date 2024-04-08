@@ -1,37 +1,28 @@
 <template>
-  <div class="flex h-full w-full flex-col">
-    <header
-      class="flex h-14 w-full items-center justify-between px-4 text-white"
-    >
+  <div class="container">
+    <header class="nav">
       <div class="flex items-center">
-        <img class="h-16 w-16" src="assets/logo.png" alt="" />
-        <span class="text-xl"></span>
+        <img src="assets/logo.png" alt="" />
       </div>
-      <div class="flex w-72 items-center text-black">
-        <div class="mr-5">
-          <a-select v-model:value="lang" class="w-24" @change="handleChange">
+      <div class="info-container">
+        <div class="language-container">
+          <a-select v-model:value="lang" @change="handleChange">
             <a-select-option :value="$t('zh')">{{ $t('zh') }}</a-select-option>
             <a-select-option :value="$t('en')">{{ $t('en') }}</a-select-option>
           </a-select>
         </div>
-        <div>
-          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-            hour
-          }}</span>
+        <div class="time-container">
+          <span>{{ hour }}</span>
           :
-          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-            min
-          }}</span>
+          <span>{{ min }}</span>
           :
-          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-            second
-          }}</span>
+          <span>{{ second }}</span>
         </div>
       </div>
     </header>
-    <section class="flex h-auto w-full flex-col items-center justify-center">
-      <img class="h-96 w-96" src="assets/logo.png" alt="" />
-      <div class="flex">
+    <section class="main-container">
+      <img src="assets/logo.png" alt="" />
+      <div class="link-container">
         <div class="btn mr-10">
           <a
             target="_blank"
@@ -115,8 +106,61 @@ const formatTime = (): void => {
 }
 </script>
 
-<style scoped>
-.btn {
-  @apply cursor-pointer rounded-md bg-sky-500 px-5 py-2 text-white hover:bg-sky-600;
+<style lang="scss" scoped>
+.container {
+  @include flex-col-cen;
+  .nav {
+    @include flex-row-cen;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    padding: 4px;
+    & img {
+      height: 60px;
+      width: 60px;
+    }
+    .info-container {
+      @include flex-row-cen;
+      width: 300px;
+      .language-container {
+        margin-right: 30px;
+      }
+    }
+    .time-container {
+      @include flex-row-cen;
+      width: 160px;
+      & span {
+        display: block;
+        margin: 0 5px;
+        padding: 3px 8px;
+        border-radius: 15px;
+        color: white;
+        background-color: #6fabdc;
+      }
+    }
+  }
+  .main-container {
+    @include flex-col-cen;
+    width: 100%;
+    height: auto;
+    & img {
+      width: 520px;
+      height: 520px;
+    }
+    .link-container {
+      display: flex;
+    }
+    .btn {
+      cursor: pointer;
+      margin-right: 20px;
+      border-radius: 10px;
+      padding: 10px;
+      color: white;
+      background-color: #30b5e1;
+    }
+    .btn:hover {
+      background-color: #218fb4;
+    }
+  }
 }
 </style>

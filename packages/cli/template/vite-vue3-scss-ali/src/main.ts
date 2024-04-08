@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
-import './assets/tailwind.css'
 import { router } from '@/router'
 // TODO: svg封装为雪碧图
 import Svg from 'com/Svg/index.vue'
