@@ -35,7 +35,7 @@
         <div class="btn mr-10">
           <a
             target="_blank"
-            href="https://github.com/liliphoenix/full-featured"
+            href="https://liliphoenix.github.io/full-featured/"
           >
             {{ $t('doc') }}
           </a>

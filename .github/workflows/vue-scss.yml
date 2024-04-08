@@ -1,4 +1,4 @@
-name: vite-vue3 template build test
+name: vite-vue3-scss template build test
 
 on:
   push:
