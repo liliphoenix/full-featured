@@ -27,7 +27,9 @@
     "postinstall": "patch-package",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "lint": "pnpm -C ./packages/cli/template/vite-vue3-tailwind-ali lint",
+    "format": "pnpm -C ./packages/cli/template/vite-vue3-tailwind-ali format"
   },
   "keywords": [],
   "author": "",
