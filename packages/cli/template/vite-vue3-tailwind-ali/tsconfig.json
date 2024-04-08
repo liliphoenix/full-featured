@@ -40,7 +40,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "src/components.d.ts",
-    "babel.config.cjs",
+    "babel.config.cjs"
   ],
   "exclude": [],
   "references": [{ "path": "./tsconfig.node.json" }]
