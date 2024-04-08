@@ -33,10 +33,10 @@ jobs:
       #   uses: actions/configure-pages@v4
       # 下载依赖
       - name: ⏬ Install dependencies
-        run: pnpm run install:template
+        run: pnpm run install
       # 打包构建
       - name: 📦 Build
-        run: pnpm run build:template
+        run: pnpm run build
       # 此项用于支持gitPage操作，用户上传dist文件夹
       # - name: Upload dist
       #   uses: actions/upload-pages-artifact@v1
