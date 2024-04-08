@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: "full-featured"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "Full-Featured"
+  text: "一款功能齐全的前端脚手架"
+  tagline: 包含当前的主流框架：Vue、React
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: 功能介绍
       link: /markdown-examples
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 安装
+      link: /install
 
 features:
   - title: Feature A
@@ -22,4 +22,3 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-
