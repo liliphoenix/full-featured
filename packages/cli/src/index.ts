@@ -3,6 +3,7 @@ import { program } from "commander";
 import inquirerCommand from "./core/template/inquirerCommand";
 import { AnalyzerFactory } from "./core/dependencies/Analyzer/analyzer";
 import { getPwdPath } from "./utils/pathUtils";
+import { createDataServer } from "./core/dependencies/server/server";
 
 function createProgram() {
   program
@@ -28,9 +29,10 @@ function createProgram() {
     .action((arg: any) => {
       // 🌸 获取当前进程路径
       const root = getPwdPath();
-      AnalyzerFactory(root, 1);
-
-      console.log(Array.from({ length: 4 }, () => Array.from({ length: 0 })));
+      const dependencyGraph = AnalyzerFactory(root, 5);
+      if (dependencyGraph) {
+        createDataServer(dependencyGraph, "../ui");
+      }
     });
   return program;
 }

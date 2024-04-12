@@ -1,6 +1,10 @@
 import path from "path";
 import fs from "fs-extra";
 
+import { readJsonFile } from "../../utils/fsUtils";
+import { PackageJson } from "../../types/PackageJson";
+import { ESdirname } from "../../utils/pathUtils";
+
 // 🌸 生成模版文件
 async function init(tarPath: string, temp: string) {
   const cwd = process.cwd();
@@ -8,7 +12,7 @@ async function init(tarPath: string, temp: string) {
   const targetDir = tarPath ? tarPath : "./";
   const targetPath = path.join(cwd, targetDir);
   // 🌸 获取目标模版
-  const tempDir = path.join(__dirname, `../../template/${temp}`);
+  const tempDir = path.join(ESdirname(), `../template/${temp}`);
   // 🌸 确保目标文件夹存在,也就是说如果不存在就创建一个
   await fs.ensureDir(targetPath);
   fs.readdir(targetPath, (err, files) => {
@@ -34,7 +38,7 @@ async function init(tarPath: string, temp: string) {
     writeFile(file);
   }
   // 🌸 获取package.json
-  const pkg = require(path.join(tempDir, "package.json"));
+  const pkg = readJsonFile<PackageJson>(path.join(tempDir, "package.json"));
   pkg.name = path.basename(targetPath);
   writeFile("package.json", JSON.stringify(pkg, null, 2));
   if (targetDir !== cwd) {

@@ -29,7 +29,7 @@ export default [
       },
     ],
     // 处理循环依赖直接外部引入即可
-    external: ["readable-stream"],
+    external: ["readable-stream", "chalk"],
     plugins,
   })),
 ];

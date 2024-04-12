@@ -10,8 +10,9 @@ function isFileExists(root: string, PackageManager: string) {
   }
 }
 
-function readJsonFile(root: string) {
-  fs.readFileSync(root);
+function readJsonFile<T>(root: string) {
+  const data = fs.readFileSync(root).toString();
+  return JSON.parse(data) as T;
 }
 
-export { isFileExists };
+export { isFileExists, readJsonFile };
