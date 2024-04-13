@@ -1,4 +1,5 @@
 import type { routeRaw } from '@/types'
+import Home from '@/view/Home.vue'
 
 export const basicRoutes: routeRaw[] = [
   {
@@ -11,7 +12,7 @@ export const basicRoutes: routeRaw[] = [
         meta: {
           role: 0
         },
-        component: import('view/Home.vue'),
+        component: Home,
         children: []
       }
     ]

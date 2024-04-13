@@ -13,12 +13,7 @@ export type setHeadersType = (
 ) => InternalAxiosRequestConfig
 
 // 🌸 axios返回的基本数据类型
-export interface resType<T> {
-  result_code: number
-  data: T
-  message: string
-  result?: T
-}
+export type resType<T> = T
 
 // 🌸 可扩展config
 export interface Request extends AxiosRequestConfig {

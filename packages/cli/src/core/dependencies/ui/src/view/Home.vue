@@ -1,100 +1,61 @@
 <template>
   <div class="flex h-full w-full flex-col">
-    <header
-      class="flex h-14 w-full items-center justify-between px-4 text-white"
-    >
-      <div class="flex items-center">
-        <img class="h-16 w-16" src="assets/logo.png" alt="" />
-        <span class="text-xl"></span>
-      </div>
-      <div class="flex w-72 items-center text-black">
-        <div class="mr-5">
-          <a-select v-model:value="lang" class="w-24" @change="handleChange">
-            <a-select-option :value="$t('zh')">{{ $t('zh') }}</a-select-option>
-            <a-select-option :value="$t('en')">{{ $t('en') }}</a-select-option>
-          </a-select>
-        </div>
-        <div>
-          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-            hour
-          }}</span>
-          :
-          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-            min
-          }}</span>
-          :
-          <span class="mx-1 rounded-md bg-sky-500/75 p-1 text-purple-50">{{
-            second
-          }}</span>
-        </div>
-      </div>
-    </header>
-    <section class="flex h-auto w-full flex-col items-center justify-center">
-      <img class="h-96 w-96" src="assets/logo.png" alt="" />
-      <div class="flex">
-        <div class="btn mr-10">
-          <a
-            target="_blank"
-            href="https://liliphoenix.github.io/full-featured/"
-          >
-            {{ $t('doc') }}
-          </a>
-        </div>
-        <div class="btn mr-10">
-          <a target="_blank" href="https://github.com/liliphoenix/full-featured"
-            >Github</a
-          >
-        </div>
-        <div class="btn" @click="jump">{{ $t('test') }}</div>
-      </div>
-    </section>
-    <footer></footer>
+    <div id="container" class="h-screen w-screen bg-pink-50"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import G6 from '@antv/g6'
 import { ref, onMounted } from 'vue'
-import { getClock } from 'utils/formatTimeUtils'
-import i18n from 'i18n/index'
-import { useI18n } from 'vue-i18n'
-import { router } from '@/router'
-const { locale } = useI18n()
-const t = i18n.global.t
-// const $t = getVueGlobalValue().$trans()
-const hour = ref()
-const min = ref()
-const second = ref()
-const lang = ref(t('en'))
+import { useStore } from '@/store'
+const store = useStore()
+const graph = ref()
+
 onMounted(() => {
-  formatTime()
-
-  setInterval(() => {
-    formatTime()
+  graph.value = new G6.Graph({
+    container: document.getElementById('container') ?? 'error',
+    width: 1510,
+    height: 830,
+    fitView: true,
+    fitViewPadding: 10,
+    modes: {
+      default: ['drag-canvas', 'drag-node', 'click-select', 'zoom-canvas']
+    }
   })
+  setNodeShape()
+  renderData()
 })
-// 🌸 语言切换
-const handleChange = (value): void => {
-  if (value === '中文' || value === 'Chinese') {
-    locale.value = 'zh'
-    lang.value = t('zh')
-  }
-  if (value === '英语' || value === 'English') {
-    locale.value = 'en'
-    lang.value = t('en')
-  }
+
+const renderData = async (): Promise<any> => {
+  await store.getNodes()
+  await store.getEdges()
+  handleGraph()
 }
 
-// 🌸 跳转
+const handleGraph = (): void => {
+  console.log(store.nodes)
+  console.log(store.edges)
 
-const jump = (): void => {
-  router.push('/test')
+  graph.value.data({
+    nodes: store.nodes,
+    edges: store.edges
+  })
+  graph.value.render()
+
+  // setNodeShape()
 }
+const setNodeShape = (): void => {
+  const group = graph.value.getGroup()
+  group.addShape('rect', {
+    name: 'rect-shape',
+    attrs: {
+      fill: 'red',
 
-const formatTime = (): void => {
-  const time = getClock(new Date())
-  hour.value = time.h
-  min.value = time.m
-  second.value = time.s
+      shadowColor: 'blue',
+      shadowBlur: 10,
+      opacity: 0.8
+    }
+  })
 }
 </script>
 

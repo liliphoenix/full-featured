@@ -27,6 +27,7 @@ function findSpecifiedDirectories(pth: string, target: string): string[] {
       res.push(parent);
     }
   });
+  console.log(res);
 
   return res;
 }

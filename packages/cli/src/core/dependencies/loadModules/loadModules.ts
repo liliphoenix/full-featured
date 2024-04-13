@@ -13,19 +13,19 @@ export function loadNpmModules(
   root: string,
   depth: number
 ): PackagesSet<PackageJson> {
-  let pkgJsonData: PackagesSet<PackageJson> = {};
+  let packageSet: PackagesSet<PackageJson> = {};
 
-  pkgJsonData[Root] = readJsonFile<PackageJson>(joinPath(root, "package.json"));
+  packageSet[Root] = readJsonFile<PackageJson>(joinPath(root, "package.json"));
   const pathList = globSync([...npmModulesGlobRules], {
     cwd: root,
     posix: true,
   });
 
   pathList.forEach((path) => {
-    pkgJsonData[posixDirname(path)] = readJsonFile<PackageJson>(
+    packageSet[posixDirname(path)] = readJsonFile<PackageJson>(
       joinPath(root, path)
     );
   });
 
-  return pkgJsonData;
+  return packageSet;
 }

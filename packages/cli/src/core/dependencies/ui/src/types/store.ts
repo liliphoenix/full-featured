@@ -1,3 +1,5 @@
+import type { storeData } from './graph'
+
 interface listObject {
   url: string
   name: string
@@ -9,3 +11,5 @@ export interface mainState {
   client: any
   list: listObject[]
 }
+
+export type storeDataType = () => storeData

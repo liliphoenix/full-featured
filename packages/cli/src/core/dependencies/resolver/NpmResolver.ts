@@ -169,12 +169,15 @@ class NpmResolver {
   matchDependency(pth: string, target: string, version: string): string {
     let result: string | undefined = undefined;
     const option: string[] = [];
+    //为了找到当前包下面是否有 node_modules 文件夹，如果有的话那么
     const possibleDir = findSpecifiedDirectories(pth, "node_modules").concat([
       posixPathJoin(pth, "node_modules"),
     ]);
+    console.log(possibleDir);
 
     possibleDir.forEach((dir) => {
       const targetPath = posixPathJoin(dir, target);
+      //   这一段就是匹配包
       if (this.packageSet[targetPath] !== undefined) {
         if (
           semver.satisfies(this.packageSet[targetPath].version, version) &&

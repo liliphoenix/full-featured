@@ -26,7 +26,6 @@ export class ResolverFactory {
     switch (pkgManager) {
       case PackageManagerType.npm:
         console.log(loadNpmModules(root, depth), depth);
-
         return new NpmResolver(loadNpmModules(root, depth), depth);
         break;
       case pkgManager === PackageManagerType.pnpm:

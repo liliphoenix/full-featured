@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@antv/g6": "^4.8.24",
     "ant-design-vue": "^4.0.0-rc.6",
     "axios": "^1.6.5",
     "classnames": "^2.5.1",

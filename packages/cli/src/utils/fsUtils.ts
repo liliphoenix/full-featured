@@ -1,4 +1,5 @@
 import fs from "fs";
+import { errorToast } from "./errorToast";
 
 function isFileExists(root: string, PackageManager: string) {
   try {
@@ -9,10 +10,20 @@ function isFileExists(root: string, PackageManager: string) {
     return false;
   }
 }
-
+function isDirectoryExists(pth: string) {
+  try {
+    const isExists = fs.existsSync(pth);
+    if (!isExists) {
+      errorToast("such directory does not exists");
+    }
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
 function readJsonFile<T>(root: string) {
   const data = fs.readFileSync(root).toString();
   return JSON.parse(data) as T;
 }
 
-export { isFileExists, readJsonFile };
+export { isFileExists, readJsonFile, isDirectoryExists };

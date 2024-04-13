@@ -4,6 +4,7 @@ import inquirerCommand from "./core/template/inquirerCommand";
 import { AnalyzerFactory } from "./core/dependencies/Analyzer/analyzer";
 import { getPwdPath } from "./utils/pathUtils";
 import { createDataServer } from "./core/dependencies/server/server";
+import { parseConfig } from "./config/dependencyConfig";
 
 function createProgram() {
   program
@@ -26,10 +27,12 @@ function createProgram() {
   program
     .command("analyze")
     .description("Analyze the dependencies in your project")
-    .action((arg: any) => {
-      // 🌸 获取当前进程路径
-      const root = getPwdPath();
-      const dependencyGraph = AnalyzerFactory(root, 5);
+    .option("--root [root]", "Input your root path")
+    .option("--depth <depth>", "Input your root path")
+    .action(({ root, path }) => {
+      const config = parseConfig(root, path);
+      // // 🌸 获取当前进程路径
+      const dependencyGraph = AnalyzerFactory(config.root, config.depth);
       if (dependencyGraph) {
         createDataServer(dependencyGraph, "../ui");
       }
