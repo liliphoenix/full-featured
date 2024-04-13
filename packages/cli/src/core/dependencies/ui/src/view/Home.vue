@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full w-full flex-col">
-    <div id="container" class="h-screen w-screen bg-pink-50"></div>
+    <div id="container" class="h-screen w-screen"></div>
   </div>
 </template>
 
@@ -25,7 +25,6 @@ onMounted(() => {
   setNodeShape()
   renderData()
 })
-
 const renderData = async (): Promise<any> => {
   await store.getNodes()
   await store.getEdges()

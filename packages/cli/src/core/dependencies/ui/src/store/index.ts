@@ -20,8 +20,7 @@ export const useStore = defineStore('main', {
           this.nodes.push({
             id: String(node.id),
             x: 100 + Number(node.depth) * 210,
-            y: 100 + index * 10,
-            size: [100, 100],
+            y: 100 + index * 50,
             type: 'rect',
             style: {
               lineWidth: 0.2
@@ -47,12 +46,18 @@ export const useStore = defineStore('main', {
 
         edges.forEach((item: Edge, index) => {
           this.edges.push({
-            id: String(index),
+            id: 'edge' + String(index),
             source: String(item.from),
             target: String(item.to),
-            color: 'red',
+            color: 'grey',
             info: item.info,
-            style: {}
+            style: {
+              endArrow: {
+                path: 'M 0,0 L 8,4 L 8,-4 Z',
+                fill: '#e2e2e2'
+              },
+              radius: 20
+            }
           })
         })
       } catch (error) {
