@@ -13,24 +13,18 @@ enum NPA_ENV {
 process.env.NPA_ENV = NPA_ENV.Development;
 
 export function createDataServer(analyzer: PackageAnalyzer, ui: string) {
+  console.log(ui);
+
   const app = express();
   const port = 3000;
 
   // 跨域, 前端开发时调试使用
   console.log(process.env.NPA_ENV);
 
-  if (process.env.NPA_ENV === NPA_ENV.Development) {
-    console.log(1223);
-
-    app.all("*", function (req, res, next) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Content-Type");
-      res.header("Access-Control-Allow-Methods", "*");
-      res.header("Content-Type", "application/json;charset=utf-8");
-      next();
-    });
+  if (process.env.NPA_ENV !== NPA_ENV.Development) {
+    console.log(NPA_ENV.Development);
   } else {
-    app.use(express.static(ui));
+    app.use("/", express.static(ui));
   }
 
   app.get("/api/nodes", (req: express.Request, res: express.Response) => {

@@ -19,6 +19,13 @@ export const getVueGlobalValue: () => globalProperties | null = () => {
 }
 
 /**
+ *  🌸 获取环境变量
+ */
+export const getEnv: () => ImportMetaEnv = () => {
+  return import.meta.env
+}
+
+/**
  * 🌸 文件s
  * @params url 文件下载地址
  * @params filename 文件名称

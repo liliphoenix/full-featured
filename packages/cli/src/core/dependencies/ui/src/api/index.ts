@@ -1,5 +1,6 @@
 import type { dataType } from '@/types/axios'
 import { Request } from './request'
+import { getEnv } from '@/utils'
 /* 
 
 * @params Baseurl 
@@ -27,56 +28,56 @@ const request = (config): any => {
 
 export const getNodes = (params = {}): dataType => {
   return request({
-    url: '/api/nodes',
+    url: getEnv().VITE_ENV === 'development' ? '/api/nodes' : '/nodes',
     method: 'get',
     params
   })
 }
 export const getEdges = (params = {}): dataType => {
   return request({
-    url: '/api/edges',
+    url: getEnv().VITE_ENV === 'development' ? '/api/edges' : '/edges',
     method: 'get',
     params
   })
 }
 export const getData = (params = {}): dataType => {
   return request({
-    url: '/api/data',
+    url: '/data',
     method: 'get',
     params
   })
 }
 export const getPackageData = (params = {}): dataType => {
   return request({
-    url: '/api/packageData',
+    url: '/packageData',
     method: 'get',
     params
   })
 }
 export const getDependencies = (params = {}): dataType => {
   return request({
-    url: '/api/dependencies',
+    url: '/dependencies',
     method: 'get',
     params
   })
 }
 export const getDependenciesList = (params = {}): dataType => {
   return request({
-    url: '/api/directDependencyList',
+    url: '/directDependencyList',
     method: 'get',
     params
   })
 }
 export const getWhyInstalled = (params = {}): dataType => {
   return request({
-    url: '/api/whyInstalled',
+    url: '/whyInstalled',
     method: 'get',
     params
   })
 }
 export const searchPackage = (params = {}): dataType => {
   return request({
-    url: '/api/searchPackage',
+    url: '/searchPackage',
     method: 'get',
     params
   })

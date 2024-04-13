@@ -2,7 +2,7 @@
 import { program } from "commander";
 import inquirerCommand from "./core/template/inquirerCommand";
 import { AnalyzerFactory } from "./core/dependencies/Analyzer/analyzer";
-import { getPwdPath } from "./utils/pathUtils";
+import { ESdirname, getPwdPath, posixPathJoin } from "./utils/pathUtils";
 import { createDataServer } from "./core/dependencies/server/server";
 import { parseConfig } from "./config/dependencyConfig";
 
@@ -34,7 +34,10 @@ function createProgram() {
       // // 🌸 获取当前进程路径
       const dependencyGraph = AnalyzerFactory(config.root, config.depth);
       if (dependencyGraph) {
-        createDataServer(dependencyGraph, "../ui");
+        createDataServer(
+          dependencyGraph,
+          posixPathJoin(ESdirname(), "../dist")
+        );
       }
     });
   return program;

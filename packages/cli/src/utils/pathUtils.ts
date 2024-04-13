@@ -28,7 +28,6 @@ function findSpecifiedDirectories(pth: string, target: string): string[] {
     }
   });
   console.log(res);
-
   return res;
 }
 function ESdirname() {
