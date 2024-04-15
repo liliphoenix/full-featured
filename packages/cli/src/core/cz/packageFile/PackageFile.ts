@@ -23,7 +23,7 @@ class PackageFile {
       case "base":
         const isPackageJsonExits = isFileExists(process.cwd(), "package.json");
         const isGitExits = isFileExists(process.cwd(), ".git");
-        const isNodeModules = isFileExists(process.cwd(), ".git");
+        const isNodeModules = isFileExists(process.cwd(), "node_modules");
 
         if (isPackageJsonExits) {
           console.log(chalk.green("\npackage.json ✅"));
@@ -34,14 +34,25 @@ class PackageFile {
         if (isNodeModules) {
           console.log(chalk.green("\nnode_modules ✅"));
         } else {
-          errorToast("❌ No git found in your project");
+          errorToast("❌ Did not install the dependencies yet");
         }
-        if (isGitExits) {
-          console.log(chalk.green("\ngit ✅\n"));
-        } else {
-          errorToast("❌ No git found in your project");
-        }
-
+        prompt({
+          type: "confirm",
+          name: "isUseGit",
+          prefix: "",
+          message: "\nAre you going to use git in your project?\n",
+          default: false,
+        }).then((res) => {
+          if (res.isUseGit) {
+            if (isGitExits) {
+              console.log(chalk.green("\ngit ✅\n"));
+            } else {
+              errorToast("❌ No git found in your project");
+            }
+          } else {
+            return;
+          }
+        });
         break;
       case "config":
         break;
