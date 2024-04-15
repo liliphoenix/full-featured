@@ -1,5 +1,5 @@
 import fs from "fs";
-import { errorToast } from "./errorToast";
+import { errorToast, successToast } from "./errorToast";
 
 function isFileExists(root: string, PackageManager: string) {
   try {
@@ -21,9 +21,16 @@ function isDirectoryExists(pth: string) {
     return false;
   }
 }
+
+function writeFile(path: string, data: string) {
+  try {
+    fs.writeFile(path, data, () => {});
+    successToast("Write file success!");
+  } catch (error) {}
+}
 function readJsonFile<T>(root: string) {
   const data = fs.readFileSync(root).toString();
   return JSON.parse(data) as T;
 }
 
-export { isFileExists, readJsonFile, isDirectoryExists };
+export { isFileExists, readJsonFile, isDirectoryExists, writeFile };

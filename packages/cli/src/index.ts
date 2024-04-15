@@ -2,9 +2,17 @@
 import { program } from "commander";
 import inquirerCommand from "./core/template/inquirerCommand";
 import { AnalyzerFactory } from "./core/dependencies/Analyzer/analyzer";
-import { ESdirname, getPwdPath, posixPathJoin } from "./utils/pathUtils";
+import {
+  ESdirname,
+  getPwdPath,
+  joinPath,
+  posixPathJoin,
+} from "./utils/pathUtils";
 import { createDataServer } from "./core/dependencies/server/server";
 import { parseConfig } from "./config/dependencyConfig";
+import { readJsonFile } from "./utils/fsUtils";
+import { PackageJson } from "./types/packageType";
+import { PackageFile } from "./core/cz/packageFile/PackageFile";
 
 function createProgram() {
   program
@@ -39,6 +47,17 @@ function createProgram() {
           posixPathJoin(ESdirname(), "../dist")
         );
       }
+    });
+  program
+    .command("commit")
+    .description("init commitlint in your project")
+    .action(() => {
+      const packageJson = readJsonFile<PackageJson>(
+        joinPath(process.cwd(), "package.json")
+      );
+      const packageFile = new PackageFile(packageJson);
+      packageFile.runDoctor("base");
+      packageFile.addScript();
     });
   return program;
 }

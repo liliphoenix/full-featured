@@ -4,6 +4,9 @@ import { fileURLToPath } from "url";
 function getPwdPath() {
   return process.cwd();
 }
+function posixGetBasename(pth: string): string {
+  return path.posix.basename(pth);
+}
 function joinPath(...filepath: string[]) {
   return path.join(...filepath);
 }
@@ -44,4 +47,5 @@ export {
   posixPathJoin,
   splitPosixPath,
   ESdirname,
+  posixGetBasename,
 };

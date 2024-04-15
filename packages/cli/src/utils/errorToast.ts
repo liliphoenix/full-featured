@@ -1,7 +1,8 @@
 import chalk from "chalk";
 
 function errorToast(msg: string) {
-  console.log(chalk.red(`Error:${msg}!`));
+  console.error(chalk.red(`Error:${msg}!`));
+  process.exit();
 }
 
 function warningToast(msg: string) {
