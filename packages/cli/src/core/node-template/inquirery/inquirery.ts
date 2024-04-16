@@ -31,7 +31,6 @@ class NodeTemplate {
     this.prompt(questions).then((res) => {
       packageJson.name = res.name;
       this.root = posixPathJoin(this.root, res.name);
-      console.log(this.root);
       copyFileEx(this.targetPath, this.root);
     });
   }

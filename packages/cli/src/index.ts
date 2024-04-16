@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from "commander";
-import inquirerCommand from "./core/viteTemplate/inquirerCommand";
+import inquirerCommand from "./core/vite-template/inquirerCommand";
 import { AnalyzerFactory } from "./core/dependencies/Analyzer/analyzer";
 import {
   ESdirname,

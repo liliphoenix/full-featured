@@ -6,7 +6,6 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginRequire from 'vite-plugin-require'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
-import legacy from '@vitejs/plugin-legacy'
 import svgLoader from 'vite-svg-loader'
 // 🌸 vite压缩图片资源
 // 🌸 icon生成雪碧图压缩
@@ -51,11 +50,8 @@ export default defineConfig({
         antd: [/node_modules\/ant-design-vue/],
         'ali-oss': [/node_modules\/ali-oss/]
       }
-    }),
-    // TODO: polyfills 垫片
-    legacy({
-      targets: ['ie >= 11']
     })
+    // TODO: polyfills 垫片
   ],
   css: {
     preprocessorOptions: {

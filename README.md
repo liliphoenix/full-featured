@@ -34,7 +34,9 @@
 Full-Featured脚手架目的是来为我们的业务开发节省时间，省去复杂的二次封装配置。
 
 项目demo：http://39.107.94.120:8001/#/home
+
 文档地址：https://liliphoenix.github.io/full-featured/
+
 自动化部署教程：https://juejin.cn/post/7352925909740322831
 
 | 功能介绍           | 详细说明                                                                                |     |
