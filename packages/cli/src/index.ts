@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from "commander";
-import inquirerCommand from "./core/template/inquirerCommand";
+import inquirerCommand from "./core/viteTemplate/inquirerCommand";
 import { AnalyzerFactory } from "./core/dependencies/Analyzer/analyzer";
 import {
   ESdirname,
@@ -13,6 +13,7 @@ import { parseConfig } from "./config/dependencyConfig";
 import { readJsonFile } from "./utils/fsUtils";
 import { PackageJson } from "./types/packageType";
 import { PackageFile } from "./core/cz/packageFile/PackageFile";
+import { NodeTemplate } from "./core/node-template/inquirery/inquirery";
 
 function createProgram() {
   program
@@ -28,9 +29,16 @@ function createProgram() {
   );
   program
     .command("init")
+    .option("--vite", "Generate a full-featured Vite template")
+    .option("--node", "Generate a full-featured Node template")
     .description("Initialize a full-featured project as prompted")
-    .action(() => {
-      inquirerCommand();
+    .action((opt) => {
+      if (opt.vite) {
+        inquirerCommand();
+      } else if (opt.node) {
+        const nodeTemp = new NodeTemplate(process.cwd());
+        nodeTemp.runPrompt();
+      }
     });
   program
     .command("analyze")
@@ -59,6 +67,7 @@ function createProgram() {
       packageFile.runDoctor("base");
       packageFile.addScript();
     });
+
   return program;
 }
 

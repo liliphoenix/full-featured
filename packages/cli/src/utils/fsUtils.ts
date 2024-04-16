@@ -1,6 +1,15 @@
 import fs from "fs";
 import { errorToast, successToast } from "./errorToast";
+import fsEx from "fs-extra";
 
+function ensureDirExtra(path: string) {
+  try {
+    fsEx.ensureDir(path);
+  } catch (error) {
+    errorToast("No such file ro directory found");
+    process.exit();
+  }
+}
 function isFileExists(root: string, PackageManager: string) {
   try {
     const filePath = `${root}/${PackageManager}`;
@@ -32,5 +41,18 @@ function readJsonFile<T>(root: string) {
   const data = fs.readFileSync(root).toString();
   return JSON.parse(data) as T;
 }
-
-export { isFileExists, readJsonFile, isDirectoryExists, writeFile };
+function copyFileEx(temp: string, target: string) {
+  fsEx.copy(temp, target);
+}
+function mkDirEx(path: string) {
+  fsEx.mkdir(path);
+}
+export {
+  mkDirEx,
+  isFileExists,
+  readJsonFile,
+  isDirectoryExists,
+  writeFile,
+  ensureDirExtra,
+  copyFileEx,
+};

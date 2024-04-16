@@ -109,9 +109,6 @@ class PackageFile {
       this.scanDependencies();
     };
     if (this.packageFile.scripts["commit"]) {
-      errorToast(
-        " Filed to write file,script has been existed a script called 'commit'"
-      );
       prompt({
         type: "confirm",
         name: "isCover",
@@ -133,6 +130,8 @@ class PackageFile {
       "commitlint-config-gitmoji",
       "husky",
     ]);
+    console.log(this.ShouldInstallDependencies.length);
+
     if (this.ShouldInstallDependencies.length === 0) {
       this.writeConfig();
     } else {
