@@ -7,6 +7,7 @@ import { errorToast, warningToast } from "../../../utils/errorToast";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import { WriteCommitlintConfig, WriteCzConfig } from "../configFile/configFile";
+import { Doctor } from "../doctor/doctor";
 const prompt = inquirer.createPromptModule();
 class PackageFile {
   packageFile: PackageJson;
@@ -18,82 +19,11 @@ class PackageFile {
     this.packageManager = "npm";
   }
   runDoctor(type: string) {
-    //检查一下有没有安装git环境;
-    switch (type) {
-      case "base":
-        const isPackageJsonExits = isFileExists(process.cwd(), "package.json");
-        const isGitExits = isFileExists(process.cwd(), ".git");
-        const isNodeModules = isFileExists(process.cwd(), "node_modules");
-
-        if (isPackageJsonExits) {
-          console.log(chalk.green("\npackage.json ✅"));
-        } else {
-          errorToast("❌ No package.json found in your project");
-          return;
-        }
-        if (isNodeModules) {
-          console.log(chalk.green("\nnode_modules ✅"));
-        } else {
-          errorToast("❌ Did not install the dependencies yet");
-        }
-        prompt({
-          type: "confirm",
-          name: "isUseGit",
-          prefix: "",
-          message: "\nAre you going to use git in your project?\n",
-          default: false,
-        }).then((res) => {
-          if (res.isUseGit) {
-            if (isGitExits) {
-              console.log(chalk.green("\ngit ✅\n"));
-            } else {
-              errorToast("❌ No git found in your project");
-            }
-          } else {
-            return;
-          }
-        });
-        break;
-      case "config":
-        break;
-      case "dependency_modules":
-        const isYarn = isFileExists(process.cwd(), "yarn.lock");
-        const isPnpm = isFileExists(process.cwd(), "pnpm-lock.yaml");
-        try {
-          execSync("npm --version");
-          this.packageManager = "npm";
-        } catch (error) {
-          errorToast(
-            "You Package manager is npm , but we do not find npm in your system \n so here we start to using npm manager"
-          );
-          return;
-        }
-        if (isYarn) {
-          try {
-            execSync("yarn --version");
-            this.packageManager = "yarn";
-            console.log(chalk.green("\nyarn ✅\n"));
-          } catch (error) {
-            warningToast(
-              "You Package manager is Yarn , but we do not find yarn in your system \n so here we start to using npm manager"
-            );
-            this.packageManager = "npm";
-          }
-        } else if (isPnpm) {
-          try {
-            execSync("pnpm --version");
-            this.packageManager = "pnpm";
-            console.log(chalk.green("\npnpm ✅\n"));
-          } catch (error) {
-            warningToast(
-              "You Package manager is Pnpm , but we do not find Pnpm in your system \n so here we start to using npm manager"
-            );
-            this.packageManager = "npm";
-          }
-        }
-        break;
-      default:
-        break;
+    const doctor = new Doctor();
+    if (type === "base") {
+      doctor.runBaseDoctor();
+    } else if (type === "dependency_modules") {
+      this.packageManager = doctor.runDependencyManagerDoctor();
     }
   }
   addScript() {
@@ -108,18 +38,17 @@ class PackageFile {
       );
       this.scanDependencies();
     };
+    this.runDoctor("base");
     if (this.packageFile.scripts["commit"]) {
       prompt({
         type: "confirm",
         name: "isCover",
         prefix: "",
-        message:
-          "\nAre you going to cover the commit script you ever written\n",
+        message: "\nAre you going to cover the commit script you ever written",
         default: true,
       }).then((res) => {
         res.isCover ? writeScript() : "";
       });
-      return;
     } else {
       writeScript();
     }
@@ -130,11 +59,11 @@ class PackageFile {
       "commitlint-config-gitmoji",
       "husky",
     ]);
-    console.log(this.ShouldInstallDependencies.length);
 
     if (this.ShouldInstallDependencies.length === 0) {
       this.writeConfig();
     } else {
+      this.writeConfig();
       this.installDependencies();
     }
   }

@@ -14,6 +14,7 @@ import { readJsonFile } from "./utils/fsUtils";
 import { PackageJson } from "./types/packageType";
 import { PackageFile } from "./core/cz/packageFile/PackageFile";
 import { NodeTemplate } from "./core/node-template/inquirery/inquirery";
+import { Doctor } from "./core/cz/doctor/doctor";
 
 function createProgram() {
   program
@@ -27,10 +28,12 @@ function createProgram() {
     "confirm your path to save your template file",
     "./{project name}"
   );
+
   program
     .command("init")
     .option("--vite", "Generate a full-featured Vite template")
     .option("--node", "Generate a full-featured Node template")
+    .option("--commit", "Add an out-of-the-box code commit check scheme")
     .description("Initialize a full-featured project as prompted")
     .action((opt) => {
       if (opt.vite) {
@@ -38,6 +41,12 @@ function createProgram() {
       } else if (opt.node) {
         const nodeTemp = new NodeTemplate(process.cwd());
         nodeTemp.runPrompt();
+      } else if (opt.commit) {
+        const packageJson = readJsonFile<PackageJson>(
+          joinPath(process.cwd(), "package.json")
+        );
+        const packageFile = new PackageFile(packageJson);
+        packageFile.addScript();
       }
     });
   program
@@ -55,17 +64,6 @@ function createProgram() {
           posixPathJoin(ESdirname(), "../dist")
         );
       }
-    });
-  program
-    .command("commit")
-    .description("init commitlint in your project")
-    .action(() => {
-      const packageJson = readJsonFile<PackageJson>(
-        joinPath(process.cwd(), "package.json")
-      );
-      const packageFile = new PackageFile(packageJson);
-      packageFile.runDoctor("base");
-      packageFile.addScript();
     });
 
   return program;
