@@ -2,48 +2,33 @@
 outline: deep
 ---
 
-# Runtime API Examples
+# 安装
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+全局安装full-featured-cli命令行工具
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+### npm
 
-```md
-<script setup>
-import { useData } from 'vitepress'
-
-const { theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+```sh
+npm i full-featured-cli -g
 ```
 
-<script setup>
-import { useData } from 'vitepress'
+查看是否安装成功
 
-const { site, theme, page, frontmatter } = useData()
-</script>
+```sh
+full-featured -v
+# 🌈 1.3.3
+```
 
-## Results
+### 快速生成一个full-featured前端模版
 
-### Theme Data
-<pre>{{ theme }}</pre>
+根据开发需要选择技术站栈即可
 
-### Page Data
-<pre>{{ page }}</pre>
+```sh
+full-featured init --vite
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
 
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+#🌈 Give your project a name full-featured
+#🌈 Which framework do you want to use? Vue+Ts
+#🌈 Select the CSS preprocessor you want (Use arrow keys)
+#❯ Tailwind CSS
+```

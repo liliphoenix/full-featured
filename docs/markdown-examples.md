@@ -17,66 +17,7 @@
 | full-featured-node         | 开发cli命令行工具、开发npm工具包、宿主环境为node的项目                                                                                                                      | node.js、rollup.js、Typescript            |
 | full-featured-commit       | 项目需要标准化的代码提交功能，提交规范为:emoji+feat:+content形式的提交内容                                                                                                  | 有手就行👋                                |
 
-**Output**
+## 关于
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-## Custom Containers
-
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+**本人是一名大三的学生，而且项目目前只是一个雏形，而且只有我一个人进行开发**，而且而且最重要的是我的能力有限，而且很菜！！！，所以大家如果发现bug和问题还请麻烦大家伙在github上提一下issus，我肯定会看到而且尽力去改正，大家每一个宝贵的问题对我来说都是一次学习的机会！！！
+谢谢大家

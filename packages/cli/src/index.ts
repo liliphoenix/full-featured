@@ -19,7 +19,7 @@ import { Doctor } from "./core/cz/doctor/doctor";
 function createProgram() {
   program
     .name("🌸 Full-Featured 🌸")
-    .version("🌈 0.0.1", "-v,--version")
+    .version("🌈 1.3.3", "-v,--version")
     .description(
       "🚀 A full-featured front-end enterprise-class scaffolding, the frame encapsulates all the functions that \nenterprise-level scaffolding should have, and does not require you to re-encapsulate. There are two \nframework options: Vue and React."
     );
