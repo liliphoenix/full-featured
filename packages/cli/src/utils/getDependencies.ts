@@ -1,4 +1,4 @@
-import glob, { globSync } from "glob";
+import { globSync } from "glob";
 import { dependenciesDirectory } from "../core/cz/denpendencyRules/dependcyDiretory";
 import { posixGetBasename } from "./pathUtils";
 function getDependencies(arr: string[]) {

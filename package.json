@@ -11,6 +11,8 @@
     "dev:template": "pnpm -C ./packages/server start & pnpm -C ./packages/vite-vue3 dev",
     "dev:docs": "pnpm -C ./packages/docs dev:docs",
     "dev:server": "pnpm -C ./packages/server start",
+    "install:temp": "pnpm -C ./template-lite install ",
+    "build:temp": "pnpm -C ./template-lite build ",
     "install:doc": "pnpm -C ./packages/docs install",
     "install:tw-ali": "pnpm -C ./packages/cli/template/vite-vue3-tailwind-ali install ",
     "install:tw": "pnpm -C ./packages/cli/template/vite-vue3-tailwind install ",

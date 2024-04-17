@@ -2,3 +2,4 @@ packages:
   - "packages/**"
   - "scripts/**"
   - "docs/**"
+  - "template-lite/**"
