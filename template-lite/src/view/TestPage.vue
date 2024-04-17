@@ -79,7 +79,6 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { UploadOutlined } from '@ant-design/icons-vue'
 import { Button } from 'ant-design-vue'
 import { getNumberIP, getWeather } from 'api/index'
 import { useOssStore } from 'store/oss'

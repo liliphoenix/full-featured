@@ -1,5 +1,4 @@
 import type { routeRaw } from '@/types'
-
 export const basicRoutes: routeRaw[] = [
   {
     path: '/',
@@ -11,7 +10,7 @@ export const basicRoutes: routeRaw[] = [
         meta: {
           role: 0
         },
-        component: import('view/Home.vue'),
+        component: () => import('view/Home.vue'),
         children: []
       }
     ]
@@ -19,7 +18,7 @@ export const basicRoutes: routeRaw[] = [
   {
     name: 'test',
     path: '/test',
-    component: import('view/TestPage.vue'),
+    component: () => import('view/TestPage.vue'),
     meta: {
       role: 0
     }
@@ -27,7 +26,7 @@ export const basicRoutes: routeRaw[] = [
   {
     name: '404',
     path: '/404',
-    component: import('view/404Page.vue'),
+    component: () => import('view/404Page.vue'),
     meta: {
       role: 0
     }

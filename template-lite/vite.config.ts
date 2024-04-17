@@ -15,6 +15,7 @@ const env =
     : loadEnv('production', process.cwd())
 
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     // TODO: http2 优化
@@ -81,15 +82,16 @@ export default defineConfig({
       }
     }
   },
-  // 配置静态资源基础路径
-  base: env.NODE_ENV === 'development' ? '' : env.ASSETS_PATH,
+
   build: {
     outDir: './dist',
     assetsDir: './static',
     // 单文件or內联临界值
     assetsInlineLimit: 8 * 1024,
+    target: 'es2015',
     rollupOptions: {
       // external: Object.keys(externalGlobalsObj)
-    }
+    },
+    minify: false
   }
 })
