@@ -37,12 +37,7 @@ export default defineConfig({
     vitePluginRequire.default(),
     chunkSplitPlugin({
       // TODO: 踩坑：包分离优化使用正则 ，用数组会报错
-      strategy: 'default',
-      customSplitting: {
-        // `react` and `react-dom` 会被打包到一个名为`render-vendor`的 chunk 里面(包括它们的一些依赖，如 object-assign)
-        antd: [/node_modules\/ant-design-vue/],
-        'ali-oss': [/node_modules\/ali-oss/]
-      }
+      strategy: 'default'
     })
   ],
   css: {
