@@ -7,7 +7,7 @@ hero:
   text: "🔧 一款功能齐全的前端工具集命令行工具"
   tagline: 一键生成企业级前端模版、npm工具模版等等功能
   image:
-    src: /logo.png
+    src: public/logo.png
     alt: Full-Featured
   actions:
     - theme: brand
