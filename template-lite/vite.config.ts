@@ -5,7 +5,6 @@ import * as path from 'path'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginRequire from 'vite-plugin-require'
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 import svgLoader from 'vite-svg-loader'
 // 🌸 vite压缩图片资源
 // 🌸 icon生成雪碧图压缩
@@ -19,7 +18,6 @@ export default defineConfig({
   plugins: [
     vue(),
     // TODO: http2 优化
-
     svgLoader(),
     // TODO: svg变成雪碧图
     createSvgIconsPlugin({
@@ -34,19 +32,9 @@ export default defineConfig({
     }),
     // TODO: 踩坑：require使用vite-plugin-require插件适配
     // @ts-expect-error
-    vitePluginRequire.default(),
-    chunkSplitPlugin({
-      // TODO: 踩坑：包分离优化使用正则 ，用数组会报错
-      strategy: 'default'
-    })
+    vitePluginRequire.default()
   ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        charset: false
-      }
-    }
-  },
+
   resolve: {
     // TODO:踩坑：忘了在tsconfig.json中命名
     alias: {
