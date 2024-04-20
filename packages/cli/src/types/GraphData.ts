@@ -1,18 +1,18 @@
-import { PackageInfo } from "./PackageJson";
-import { dependenciesType } from "../core/dependencies/enums/dependenciesType";
+import { PackageInfo } from './PackageJson'
+import { dependenciesType } from '../core/dependencies/enums/dependenciesType'
 
 interface Edge {
-  from: number;
-  to: number;
-  info: dependenciesType;
+  from: number
+  to: number
+  info: dependenciesType
 }
 
 interface GraphData {
-  nodes: PackageInfo[];
-  edges: Edge[];
+  nodes: PackageInfo[]
+  edges: Edge[]
   licenses: {
-    [name: string]: number;
-  };
+    [name: string]: number
+  }
 }
 
-export { GraphData };
+export { GraphData }

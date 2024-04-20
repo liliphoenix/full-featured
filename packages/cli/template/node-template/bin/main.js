@@ -1,2 +1,2 @@
-import { main } from "../lib/index.js";
-main();
+import { main } from '../lib/index.js'
+main()

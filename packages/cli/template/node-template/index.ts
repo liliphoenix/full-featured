@@ -1,6 +1,6 @@
-import chalk from "chalk";
+import chalk from 'chalk'
 
 function main() {
-  console.log(chalk.red("Hello Full-Featured"));
+  console.log(chalk.red('Hello Full-Featured'))
 }
-export { main };
+export { main }

@@ -1,9 +1,8 @@
-import { posix } from "path";
-import { writeFile } from "../../../utils/fsUtils";
-import { joinPath } from "../../../utils/pathUtils";
+import { isFileExists, writeFile } from '../../../utils/fsUtils'
+import { joinPath } from '../../../utils/pathUtils'
 
 function WriteCzConfig() {
-  const filename = ".cz-config.cjs";
+  const filename = '.cz-config.cjs'
   const content = `module.exports={
     types: [
       {
@@ -67,12 +66,12 @@ function WriteCzConfig() {
     allowCustomScopes: true,
     allowBreakingChanges: [":sparkles: feat", ":bug: fix"],
     subjectLimit: 72,
-  };`;
+  };`
 
-  writeFile(joinPath(process.cwd(), filename), content);
+  writeFile(joinPath(process.cwd(), filename), content)
 }
 function WriteCommitlintConfig() {
-  const filename = ".commitlintrc.js";
+  const filename = '.commitlintrc.js'
   const content = `export default {
     extends: ["./node_modules/commitlint-config-gitmoji", "cz"],
     rules: {
@@ -156,7 +155,81 @@ function WriteCommitlintConfig() {
         ],
       ],
       "subject-empty": [2, "never"],
-    }}`;
-  writeFile(joinPath(process.cwd(), filename), content);
+    }}`
+  writeFile(joinPath(process.cwd(), filename), content)
 }
-export { WriteCommitlintConfig, WriteCzConfig };
+function WriteHuskyConfig() {
+  const preCommitContent = `#!/usr/bin/env sh
+  . "$(dirname -- "$0")/_/husky.sh"
+  npm run lint && npm run format `
+
+  const isPreCommitExits =
+    isFileExists('./.husky/_', 'pre-commit') ||
+    isFileExists('./.husky', 'pre-commit')
+
+  if (isPreCommitExits) {
+    writeFile(joinPath(process.cwd(), '.husky/pre-commit'), preCommitContent)
+  } else {
+    writeFile(joinPath(process.cwd(), '.husky/pre-commit'), preCommitContent)
+  }
+}
+function WriteEslintConfig() {
+  const filename = '.eslintrc'
+  const content = `{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    // set eslint env
+    "env": {
+      "node": true
+    }
+  }
+  `
+  writeFile(joinPath(process.cwd(), filename), content)
+}
+function WritePrettierConfig() {
+  const filename = '.prettierrc.js'
+  const ignoreFile = '.prettierignore'
+  const content = `
+    export default {
+      // 一行的字符数，如果超过会进行换行，默认为80
+      printWidth: 80,
+      // 一个tab代表几个空格数，默认为2
+      tabWidth: 2,
+      // 是否使用tab进行缩进，默认为false，表示用空格进行缩减
+      useTabs: false,
+      // 字符串是否使用单引号，默认为false，使用双引号
+      singleQuote: true,
+      // 行位是否使用分号，默认为true
+      semi: false,
+      // 是否使用尾逗号，有三个可选值"<none|es5|all>"
+      trailingComma: 'none',
+      // 对象大括号直接是否有空格，默认为true，效果：{ foo: bar }
+      bracketSpacing: true
+    }  
+  `
+  const ignoreFileContent = `
+  .history/
+  node_modules
+  dist
+`
+  writeFile(joinPath(process.cwd(), filename), content)
+  writeFile(joinPath(process.cwd(), ignoreFile), ignoreFileContent)
+}
+export {
+  WriteCommitlintConfig,
+  WriteCzConfig,
+  WriteHuskyConfig,
+  WriteEslintConfig,
+  WritePrettierConfig
+}

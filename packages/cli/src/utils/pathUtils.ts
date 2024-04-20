@@ -1,42 +1,42 @@
-import path from "path";
-import { fileURLToPath } from "url";
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 function getPwdPath() {
-  return process.cwd();
+  return process.cwd()
 }
 function posixGetBasename(pth: string): string {
-  return path.posix.basename(pth);
+  return path.posix.basename(pth)
 }
 function joinPath(...filepath: string[]) {
-  return path.join(...filepath);
+  return path.join(...filepath)
 }
 function posixDirname(filepath: string) {
-  return path.posix.dirname(filepath);
+  return path.posix.dirname(filepath)
 }
 function splitPosixPath(pth: string) {
-  return pth.split(path.posix.sep);
+  return pth.split(path.posix.sep)
 }
 function posixPathJoin(...pth: string[]) {
-  return path.posix.join(...pth);
+  return path.posix.join(...pth)
 }
 function findSpecifiedDirectories(pth: string, target: string): string[] {
-  const dirs = splitPosixPath(pth);
-  const res: string[] = [];
-  let parent = "";
+  const dirs = splitPosixPath(pth)
+  const res: string[] = []
+  let parent = ''
   dirs.forEach((dir) => {
-    parent = posixPathJoin(parent, dir);
+    parent = posixPathJoin(parent, dir)
 
     if (dir === target) {
-      res.push(parent);
+      res.push(parent)
     }
-  });
-  console.log(res);
-  return res;
+  })
+  console.log(res)
+  return res
 }
 function ESdirname() {
-  const __filenameNew = fileURLToPath(import.meta.url);
+  const __filenameNew = fileURLToPath(import.meta.url)
 
-  return path.dirname(__filenameNew);
+  return path.dirname(__filenameNew)
 }
 
 export {
@@ -47,5 +47,5 @@ export {
   posixPathJoin,
   splitPosixPath,
   ESdirname,
-  posixGetBasename,
-};
+  posixGetBasename
+}

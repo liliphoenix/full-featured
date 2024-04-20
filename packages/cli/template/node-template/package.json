@@ -20,9 +20,13 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
     "commitlint-config-gitmoji": "^2.3.1",
+    "eslint": "^9.0.0",
     "full-featured-cz": "^0.0.1-development",
     "husky": "^9.0.11",
+    "prettier": "^3.2.5",
     "rollup": "^4.14.0",
     "rollup-plugin-esbuild": "^6.1.1",
     "typescript": "^5.4.5"
