@@ -88,7 +88,11 @@ class PackageFile {
     this.runDoctor('dependency_modules')
     spawn(
       this.packageManager,
-      ['install', ...this.ShouldInstallDependencies, '-D'],
+      [
+        this.packageManager == 'npm' ? 'install' : 'add',
+        ...this.ShouldInstallDependencies,
+        '-D'
+      ],
       {
         cwd: process.cwd(),
         stdio: 'inherit'

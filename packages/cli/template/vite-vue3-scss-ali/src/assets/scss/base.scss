@@ -1,4 +1,5 @@
 @import url("./init.scss");
+
 @mixin flex-col-cen{
     display: flex;
     flex-direction: column;
@@ -14,5 +15,27 @@
 @mixin flex-col{
     display: flex;
     flex-direction: column;
+}
 
+@mixin ellipse($line:1){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @if $line==1{
+        white-space:nowrap;
+    }
+    @if $line>1{
+        -webkit-line-clamp: $line;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+}
+@mixin text-gradient{
+    background: inear-gradient(135deg,#0eaf6d,
+    #ff6ac6 25%,
+    #147b96 50%,
+    #e6d205 55%,
+    #2cc4e0 60%,
+    #8b2ce0 80%,
+    #ff6384 95%,
+    #08dfb4);
 }

@@ -17,6 +17,7 @@ class Doctor {
     } catch (error) {
       errorToast('❌ Did not install the dependencies yet')
     }
+    
     try {
       isFileExists(process.cwd(), 'node_modules')
       console.log(chalk.green('\nnode_modules ✅'))

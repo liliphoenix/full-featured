@@ -8,7 +8,8 @@
     "commit": "git add . && ./node_modules/full-featured-cz/standalone.js",
     "cli": "node ./bin/main.js",
     "dev": "rollup -c rollup.config.dev.js --watch",
-    "build": "rollup -c rollup.config.build.js"
+    "build": "rollup -c rollup.config.build.js",
+    "lint": "eslint . --ext .js,.ts --fix"
   },
   "type": "module",
   "author": "",
@@ -23,7 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
     "commitlint-config-gitmoji": "^2.3.1",
-    "eslint": "^9.0.0",
+    "eslint": "^8.56.0",
     "full-featured-cz": "^0.0.1-development",
     "husky": "^9.0.11",
     "prettier": "^3.2.5",
@@ -33,5 +34,8 @@
   },
   "dependencies": {
     "chalk": "^5.3.0"
+  },
+  "cz-customizable": {
+    "config": ".cz-config.js"
   }
 }

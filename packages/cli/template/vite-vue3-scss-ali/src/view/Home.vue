@@ -4,6 +4,7 @@
       <div class="flex items-center">
         <img src="assets/logo.png" alt="" />
       </div>
+      <h1>full-featured</h1>
       <div class="info-container">
         <div class="language-container">
           <a-select v-model:value="lang" @change="handleChange">
@@ -23,7 +24,7 @@
     <section class="main-container">
       <img src="assets/logo.png" alt="" />
       <div class="link-container">
-        <div class="btn mr-10">
+        <div class="btn">
           <a
             target="_blank"
             href="https://liliphoenix.github.io/full-featured/"
@@ -31,15 +32,16 @@
             {{ $t('doc') }}
           </a>
         </div>
-        <div class="btn mr-10">
+        <div class="btn">
           <a target="_blank" href="https://github.com/liliphoenix/full-featured"
-            >Github</a
-          >
+            >Github
+          </a>
         </div>
         <div class="btn" @click="jump">{{ $t('test') }}</div>
       </div>
     </section>
     <footer></footer>
+    <div class="square"></div>
   </div>
 </template>
 
@@ -110,6 +112,9 @@ const formatTime = (): void => {
 .container {
   @include flex-col-cen;
   .nav {
+    & h1 {
+      @include text-gradient;
+    }
     @include flex-row-cen;
     justify-content: space-between;
     height: 50px;

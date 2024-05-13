@@ -15,6 +15,31 @@ app.config.globalProperties.$isRole = false
 app.config.globalProperties.$prefix = 'bobi-vue-admin'
 
 // app.config.globalProperties.
+app.directive('throttle', {
+  created: (el, binding) => {
+    let throttleTime = binding.value // 节流时间
+    if (!throttleTime) {
+      // 用户若不设置节流时间，则默认2s
+      throttleTime = 2000
+    }
+    let cbFun
+    el.addEventListener(
+      'click',
+      (event) => {
+        if (!cbFun) {
+          // 第一次执行
+          cbFun = setTimeout(() => {
+            cbFun = null
+          }, throttleTime)
+        } else {
+          event && event.stopImmediatePropagation()
+        }
+      },
+      true
+    )
+  }
+})
+
 app.use(pinia)
 app.use(i18n)
 app.component('SvgCom', Svg)

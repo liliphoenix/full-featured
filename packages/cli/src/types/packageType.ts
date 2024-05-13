@@ -6,4 +6,5 @@ export interface PackageJson {
   license?: string | object[]
   scripts: ScriptMap
   husky?: ScriptMap
+  type?:string
 }

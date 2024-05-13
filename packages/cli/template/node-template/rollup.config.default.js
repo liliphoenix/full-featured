@@ -1,10 +1,9 @@
-import { defineConfig } from 'rollup'
 import resolver from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import terser from '@rollup/plugin-terser'
 import esbuild from 'rollup-plugin-esbuild'
-const input = ['index.ts']
+const input = ['src/index.ts']
 const plugins = [
   resolver({
     preferBuiltins: true

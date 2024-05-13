@@ -27,6 +27,7 @@ function isDirectoryExists(pth: string) {
     }
     return true
   } catch (error) {
+  
     return false
   }
 }

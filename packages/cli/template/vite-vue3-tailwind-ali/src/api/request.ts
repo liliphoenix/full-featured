@@ -1,3 +1,4 @@
+import { router } from '@/router'
 import axios from 'axios'
 import type {
   AxiosError,
@@ -75,6 +76,8 @@ export class Request {
           case 401:
             message = '未授权，请重新登录(401)'
             // 这里可以做清空storage并跳转到登录页的操作
+            router.push('/login')
+            localStorage.setItem('token', '')
             break
           case 403:
             message = '拒绝访问(403)'
