@@ -1,0 +1,18 @@
+@import url("./init.scss");
+@mixin flex-col-cen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-row-cen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-col{
+    display: flex;
+    flex-direction: column;
+
+}
