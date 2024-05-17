@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <Button class="btn" type="primary" @click="getNumberIPFun">{{
-        $t('postTest')
-      }}</Button>
+      <button class="btn" @click="getNumberIPFun">
+        {{ $t('postTest') }}
+      </button>
       <div class="search-container">
         <a-input-search
           v-model:value="phoneNumber"
@@ -16,9 +16,9 @@
       <span>{{ $t('phoneNumberCity') }}{{ postTest }}</span>
     </div>
     <div>
-      <Button class="btn" type="primary" @click="getWeatherFun">{{
-        $t('getTest')
-      }}</Button>
+      <button class="btn" @click="getWeatherFun">
+        {{ $t('getTest') }}
+      </button>
       <div>{{ $t('weatherFromBeijing') }}{{ getTest }}</div>
     </div>
     <!-- <a-upload name="file" action="" :custom-request="uploadFile"> -->
@@ -36,11 +36,10 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { Button } from 'ant-design-vue'
+
 import { getNumberIP, getWeather } from 'api/index'
 import { getUserDevice } from 'utils/locationUtils'
 import { router } from '@/router'
-
 const postTest = ref()
 const getTest = ref()
 const phoneNumber = ref()

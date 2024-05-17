@@ -14,9 +14,12 @@ declare module 'vue' {
     AStyleProvider: typeof import('ant-design-vue/es')['StyleProvider']
     ATable: typeof import('ant-design-vue/es')['Table']
     AUpload: typeof import('ant-design-vue/es')['Upload']
+    Dialog: typeof import('./src/components/dialog/index.vue')['default']
     MessageBox: typeof import('./src/components/Message/MessageBox.vue')['default']
+    MyToast: typeof import('./src/components/MyToast/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Svg: typeof import('./src/components/Svg/index.vue')['default']
+    Toast: typeof import('./src/components/toast/index.vue')['default']
   }
 }

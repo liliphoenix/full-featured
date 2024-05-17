@@ -18,8 +18,6 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^7.0.1",
-    "ant-design-vue": "^4.0.0-rc.6",
     "axios": "^1.6.5",
     "classnames": "^2.5.1",
     "cz-customizable": "^7.0.0",
@@ -31,7 +29,6 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@ant-design/cssinjs": "^1.18.4",
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
     "@types/node": "^20.11.0",

@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 // TODO:踩坑 使用 import * as path 引入
 import * as path from 'path'
 import Components from 'unplugin-vue-components/vite'
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import vitePluginRequire from 'vite-plugin-require'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 import legacy from '@vitejs/plugin-legacy'
@@ -28,11 +27,7 @@ export default defineConfig({
       iconDirs: [path.join(__dirname, 'src/assets/svgs')]
     }),
     Components({
-      resolvers: [
-        AntDesignVueResolver({
-          importStyle: false // css in js
-        })
-      ]
+      resolvers: []
     }),
     // TODO: 踩坑：require使用vite-plugin-require插件适配
     // @ts-expect-error

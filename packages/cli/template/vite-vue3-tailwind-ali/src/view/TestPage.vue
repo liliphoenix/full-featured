@@ -68,6 +68,14 @@
     </div>
     <SvgCom name="vite-test1"></SvgCom>
     <SvgCom name="vite-test2"></SvgCom>
+    <Recycle :items="longList" :item-size="100" class="h-52 w-52">
+      <template #item="item">
+        <!-- 填写需要渲染列表item -->
+        <div>
+          {{ item.data.id }}
+        </div>
+      </template>
+    </Recycle>
     <div
       class="fixed right-2 top-2 cursor-pointer rounded-xl bg-sky-600 p-2 text-white"
       @click="jump"
@@ -78,12 +86,12 @@
 </template>
 
 <script lang="ts" setup>
+import Recycle from 'com/RecycleScroller/index.vue'
 import { ref, onMounted } from 'vue'
 import { UploadOutlined } from '@ant-design/icons-vue'
 import { Button } from 'ant-design-vue'
 import { getNumberIP, getWeather } from 'api/index'
 import { useOssStore } from 'store/oss'
-import { getUserDevice } from 'utils/locationUtils'
 import { router } from '@/router'
 const store = useOssStore()
 const dataSource = ref([
@@ -108,10 +116,20 @@ const columns = ref([
 const postTest = ref()
 const getTest = ref()
 const phoneNumber = ref()
+const longList = ref()
+longList.value = Array(100)
+  .fill(0)
+  .map((item: any, index: any) => {
+    console.log(item)
+    return {
+      id: index + 1
+    }
+  })
 onMounted(async () => {
   await store.getFileListOss()
   dataSource.value = store.list
-  console.log(getUserDevice())
+
+  console.log(longList.value)
 })
 // 🌸 post 测试
 const getNumberIPFun = async (): Promise<any> => {
