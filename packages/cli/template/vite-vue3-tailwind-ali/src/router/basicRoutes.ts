@@ -21,7 +21,7 @@ export const basicRoutes: routeRaw[] = [
     path: '/test',
     component: () => import('view/TestPage.vue'),
     meta: {
-      role: 0
+      role: 1
     }
   },
   {

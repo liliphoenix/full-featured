@@ -6,7 +6,7 @@ export const router = createRouter({
   history: createWebHashHistory()
 })
 
-// 全局路由守卫
+// 全局路由前置守卫
 // router.beforeEach((to, _, next) => {
 //   const token = getToken()
 //   if (token === null) {

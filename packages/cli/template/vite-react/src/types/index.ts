@@ -8,7 +8,7 @@ export type routeRaw = RouteRecordRaw & {
   redirect?: string
 }
 export interface metaRaw {
-  role: 0 | 1
+  role: 0
 }
 export type getTokenFun = () => string | null
 

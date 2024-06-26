@@ -31,7 +31,7 @@
       "store/*": ["src/store/*"],
       "i18n/*": ["src/i18n/*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client","pinia-plugin-persist"]
   },
   "include": [
     "./*.ts",

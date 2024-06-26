@@ -25,11 +25,11 @@ export class ResolverFactory {
 
     switch (pkgManager) {
       case PackageManagerType.npm:
-        console.log(loadNpmModules(root, depth), depth)
-        return new NpmResolver(loadNpmModules(root, depth), depth)
+        console.log(loadNpmModules(root), depth)
+        return new NpmResolver(loadNpmModules(root), depth)
         break
       case pkgManager === PackageManagerType.pnpm:
-        return new NpmResolver(loadNpmModules(root, depth), depth)
+        return new NpmResolver(loadNpmModules(root), depth)
         break
     }
     // 然后根据管理器类型 使用对应的resolver

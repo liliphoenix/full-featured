@@ -48,11 +48,15 @@
         <div class="btn" @click="jump">{{ $t('test') }}</div>
       </div>
     </section>
-    <footer></footer>
+    <footer>
+      <div ref="testDom" @click="testFun">{{ testVal }}</div>
+      <Test ref="testRef" @testEmit="testEmit"></Test>
+    </footer>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Test from 'com/Test/index.vue'
 import { ref, onMounted } from 'vue'
 import { getClock } from 'utils/formatTimeUtils'
 import { getNumberIP, getWeather } from 'api/index'
@@ -67,6 +71,9 @@ const min = ref()
 const second = ref()
 const weather = ref()
 const lang = ref(t('en'))
+const testVal = ref('123')
+const testDom = ref('testDom')
+const testRef = ref('testRef')
 onMounted(() => {
   formatTime()
   getNumberIPFun()
@@ -74,7 +81,12 @@ onMounted(() => {
   setInterval(() => {
     formatTime()
   })
+  console.log(testRef.value)
 })
+const testFun = (): void => {
+  testVal.value = '321'
+  testVal.value = '321'
+}
 // 🌸 语言切换
 const handleChange = (value): void => {
   if (value === '中文' || value === 'Chinese') {
@@ -112,6 +124,10 @@ const formatTime = (): void => {
   hour.value = time.h
   min.value = time.m
   second.value = time.s
+}
+// 测试emit
+const testEmit = (): void => {
+  alert('emit success')
 }
 </script>
 

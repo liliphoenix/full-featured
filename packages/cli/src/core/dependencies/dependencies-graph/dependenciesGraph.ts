@@ -1,8 +1,9 @@
+/* eslint-disable no-extra-semi */
 import { PackageInfo } from '../../../types/PackageJson'
 import { dependenciesType } from '../enums/dependenciesType'
 import Fuse from 'fuse.js'
 
-import { Graph } from './Graph'
+import { Edge, Graph } from './Graph'
 import { JsonData } from '../../../types/JsonData'
 import { GraphData } from '../../../types/GraphData'
 export const DEFAULT_DEPTH = 0
@@ -34,7 +35,7 @@ class DependencyGraph {
 
   setPackageDepth(pth: string, depth: number): void {
     if (this.index.has(pth)) {
-      (this.packages[this.index.get(pth) as number] as PackageInfo).depth =
+      ;(this.packages[this.index.get(pth) as number] as PackageInfo).depth =
         depth
     }
   }
@@ -55,7 +56,7 @@ class DependencyGraph {
         version: v.version,
         dependencies: []
       }
-      ;(edges[idx] as Ed<dependenciesType>[]).forEach((e) => {
+      ;(edges[idx] as Edge<dependenciesType>[]).forEach((e) => {
         if (
           res[v.path] !== undefined &&
           res[v.path]!['dependencies'] !== undefined

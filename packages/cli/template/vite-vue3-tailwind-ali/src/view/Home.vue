@@ -53,6 +53,7 @@
 </template>
 
 <script lang="ts" setup>
+import { userInfoStore } from '@/store/userInfo'
 import { ref, onMounted } from 'vue'
 import { getClock } from 'utils/formatTimeUtils'
 import { getNumberIP, getWeather } from 'api/index'
@@ -61,6 +62,8 @@ import { useI18n } from 'vue-i18n'
 import { router } from '@/router'
 const { locale } = useI18n()
 const t = i18n.global.t
+const store = userInfoStore()
+
 // const $t = getVueGlobalValue().$trans()
 const hour = ref()
 const min = ref()
@@ -74,6 +77,8 @@ onMounted(() => {
   setInterval(() => {
     formatTime()
   })
+  store.username = 'bobi'
+  store.password = '不许看！！'
 })
 // 🌸 语言切换
 const handleChange = (value): void => {

@@ -1,14 +1,6 @@
+// 数据存储到sessionStorage中
 import { defineStore } from 'pinia'
 
-export const useStore = defineStore('main', {
-  state: () => {
-    return {
-      filename: 'name'
-    }
-  },
-  actions: {}
-})
-// 数据存储到sessionStorage中
 export const userInfoStore = defineStore('userInfo', {
   state: () => {
     return {
