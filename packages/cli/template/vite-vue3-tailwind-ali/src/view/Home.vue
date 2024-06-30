@@ -70,6 +70,7 @@ const min = ref()
 const second = ref()
 const weather = ref()
 const lang = ref(t('en'))
+const testSet = 0
 onMounted(() => {
   formatTime()
   getNumberIPFun()
@@ -79,6 +80,7 @@ onMounted(() => {
   })
   store.username = 'bobi'
   store.password = '不许看！！'
+  console.log(testSet)
 })
 // 🌸 语言切换
 const handleChange = (value): void => {

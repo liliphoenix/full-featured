@@ -1,5 +1,9 @@
 <template>
-  <Button type="primary" @click="testFun">TestEmit</Button>
+  <div>
+    <Button type="primary" @click="testFun">TestEmit</Button>
+    <div>{{ msg1 }}</div>
+    <div>{{ msg2 }}</div>
+  </div>
 </template>
 <script lang="ts" setup>
 import { Button } from 'ant-design-vue'
