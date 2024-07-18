@@ -5,7 +5,7 @@
     >
       <div class="flex items-center">
         <img class="h-16 w-16" src="assets/logo.png" alt="" />
-        <span class="text-xl"></span>
+        <demo-canvas :can-height="35" :can-font="30"></demo-canvas>
       </div>
       <div class="flex w-72 items-center text-black">
         <div class="mr-5">
@@ -30,7 +30,9 @@
       </div>
     </header>
     <section class="flex h-auto w-full flex-col items-center justify-center">
-      <img class="h-96 w-96" src="assets/logo.png" alt="" />
+      <img class="h-72 w-72" src="assets/logo.png" alt="" />
+      <demo-canvas></demo-canvas>
+
       <div class="flex">
         <div class="btn mr-10">
           <a

@@ -14,6 +14,8 @@ declare module 'vue' {
     AStyleProvider: typeof import('ant-design-vue/es')['StyleProvider']
     ATable: typeof import('ant-design-vue/es')['Table']
     AUpload: typeof import('ant-design-vue/es')['Upload']
+    Demo: typeof import('./src/components/Canvas/demo.vue')['default']
+    DemoCanvas: typeof import('./src/components/Canvas/demoCanvas.vue')['default']
     RecycleScroller: typeof import('./src/components/RecycleScroller/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
