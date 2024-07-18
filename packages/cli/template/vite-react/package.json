@@ -1,6 +1,5 @@
 {
-  "name": "vite-react-tailwind-ali",
-  "private": true,
+  "name": "vite-react",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

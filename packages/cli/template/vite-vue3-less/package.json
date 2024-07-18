@@ -1,6 +1,5 @@
 {
-  "name": "vite-full-featured",
-  "private": true,
+  "name": "vite-vue3-less",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

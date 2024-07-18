@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "git add . && cz-customizable",
@@ -45,6 +44,7 @@
     "commitlint-config-gitmoji": "^2.3.1",
     "cz-customizable": "^7.0.0",
     "husky": "^9.0.11",
+    "lerna": "^8.1.6",
     "patch-package": "^8.0.0",
     "typescript": "^5.4.2",
     "vitepress": "1.0.0-rc.45"

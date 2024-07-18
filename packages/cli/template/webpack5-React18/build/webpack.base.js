@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
 const WebpackBar = require('webpackbar')
-const plugin = require('tailwindcss')
+// const plugin = require('tailwindcss')
 const CopyPlugins = require('copy-webpack-plugin')
 module.exports = {
   entry: path.join(__dirname, '../src/main.tsx'),

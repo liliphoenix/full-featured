@@ -1,0 +1,19 @@
+0 silly argv { _: [ 'ls' ], lernaVersion: '8.1.6', '$0': 'lerna' }
+1 notice cli v8.1.6
+2 verbose packageConfigs Package manager "pnpm" detected. Resolving packages using `pnpm-workspace.yaml`.
+3 verbose rootPath /Users/bobi/code/full-featured
+4 error Failed to process project graph. Run "nx reset" to fix this. Please report the issue if you keep seeing it.
+4 error   MultipleProjectsWithSameNameError: The following projects are defined in multiple locations:
+4 error   - vite-full-featured:
+4 error     - packages/cli/template/vite-vue3-scss-ali
+4 error     - template-lite
+4 error
+4 error   To fix this, set a unique name for each project in a project.json inside the project's root. If the project does not currently have a project.json, you can create one that contains only a name.
+4 error       at validateAndNormalizeProjectRootMap (/Users/bobi/code/full-featured/node_modules/.pnpm/nx@19.4.1/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:457:15)
+4 error       at mergeCreateNodesResults (/Users/bobi/code/full-featured/node_modules/.pnpm/nx@19.4.1/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:325:9)
+4 error       at /Users/bobi/code/full-featured/node_modules/.pnpm/nx@19.4.1/node_modules/nx/src/project-graph/utils/project-configuration-utils.js:266:85
+4 error       at processTicksAndRejections (node:internal/process/task_queues:96:5)
+4 error       at async buildProjectGraphAndSourceMapsWithoutDaemon (/Users/bobi/code/full-featured/node_modules/.pnpm/nx@19.4.1/node_modules/nx/src/project-graph/project-graph.js:77:31)
+4 error       at async createProjectGraphAndSourceMapsAsync (/Users/bobi/code/full-featured/node_modules/.pnpm/nx@19.4.1/node_modules/nx/src/project-graph/project-graph.js:208:25)
+4 error       at async createProjectGraphAsync (/Users/bobi/code/full-featured/node_modules/.pnpm/nx@19.4.1/node_modules/nx/src/project-graph/project-graph.js:197:39)
+4 error       at async detectProjects (/Users/bobi/code/full-featured/node_modules/.pnpm/lerna@8.1.6/node_modules/lerna/dist/index.js:2999:25)

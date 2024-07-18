@@ -1,6 +1,5 @@
 {
-  "name": "vite-full-featured",
-  "private": true,
+  "name": "template-lite",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
