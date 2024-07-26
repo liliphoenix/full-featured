@@ -37,9 +37,10 @@ export class Request {
         if (!navigator.onLine) {
           throw new Error('network did not connected')
         }
+
         // 🌸 1.token 用户身份验证
         const token = localStorage.getItem('token')
-        if (token === undefined) {
+        if (token !== undefined) {
           config.headers.Authorization = token
         }
         // 🌸 2.自定义请求头

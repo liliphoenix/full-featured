@@ -11,6 +11,7 @@ function inquirerCommand() {
   prompt(questions).then((answers) => {
     const path = `./${answers.name}`
     const lintStyle = (tempPrefix: string) => {
+      console.log(tempPrefix)
       switch (answers.css) {
         case 'Tailwind CSS':
           template = `${tempPrefix}-tailwind`
@@ -22,6 +23,8 @@ function inquirerCommand() {
           template = `${tempPrefix}-less`
           break
       }
+      console.log(answers)
+
       if (answers.aliOss) {
         template += '-ali'
       }
@@ -29,7 +32,7 @@ function inquirerCommand() {
     if (answers.framework == 'Vue+Ts') {
       lintStyle('vite-vue3')
     } else {
-      lintStyle('vite-react')
+      template = 'webpack5-React18'
     }
     init(path, template)
   })
