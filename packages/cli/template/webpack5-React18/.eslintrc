@@ -11,10 +11,19 @@
     ],
     "rules": {
       "no-console": "off",
-      "@typescript-eslint/no-var-requires":"off"
+      "@typescript-eslint/no-var-requires":"off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/promise-function-async": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "vue/no-v-model-argument": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/prefer-optional-chain": "off"
     },
     // set eslint env
-    "env": {
+    env: {
       "node": true
     }
   }
