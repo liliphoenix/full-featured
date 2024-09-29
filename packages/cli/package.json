@@ -54,6 +54,8 @@
     "hirestime": "^7.0.4",
     "inquirer": "^8.2.0",
     "minimist": "^1.2.8",
-    "portfinder": "^1.0.32"
+    "open": "^10.1.0",
+    "portfinder": "^1.0.32",
+    "readable-stream": "^4.5.2"
   }
 }

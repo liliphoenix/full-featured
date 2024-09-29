@@ -10,7 +10,7 @@ function warningToast(msg: string) {
 }
 
 function successToast(msg: string) {
-  console.log(chalk.green(`Warning:${msg}!`))
+  console.log(chalk.green(`Success:${msg}!`))
 }
 
 export { errorToast, warningToast, successToast }

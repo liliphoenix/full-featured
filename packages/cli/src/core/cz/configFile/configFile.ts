@@ -68,7 +68,7 @@ function WriteCzConfig() {
     subjectLimit: 72,
   };`
 
-  writeFile(joinPath(process.cwd(), filename), content)
+  writeFile(joinPath(process.cwd(), filename), content, filename)
 }
 function WriteCommitlintConfig() {
   const filename = '.commitlintrc.js'
@@ -156,9 +156,10 @@ function WriteCommitlintConfig() {
       ],
       "subject-empty": [2, "never"],
     }}`
-  writeFile(joinPath(process.cwd(), filename), content)
+  writeFile(joinPath(process.cwd(), filename), content, filename)
 }
 function WriteHuskyConfig() {
+  const filename = 'husky config'
   const preCommitContent = `#!/usr/bin/env sh
   . "$(dirname -- "$0")/_/husky.sh"
   npm run lint && npm run format `
@@ -168,9 +169,9 @@ function WriteHuskyConfig() {
     isFileExists('./.husky', 'pre-commit')
 
   if (isPreCommitExits) {
-    writeFile(joinPath(process.cwd(), '.husky/pre-commit'), preCommitContent)
+    writeFile(joinPath(process.cwd(), '.husky/pre-commit'), preCommitContent, filename)
   } else {
-    writeFile(joinPath(process.cwd(), '.husky/pre-commit'), preCommitContent)
+    writeFile(joinPath(process.cwd(), '.husky/pre-commit'), preCommitContent, filename)
   }
 }
 function WriteEslintConfig() {
@@ -195,7 +196,7 @@ function WriteEslintConfig() {
     }
   }
   `
-  writeFile(joinPath(process.cwd(), filename), content)
+  writeFile(joinPath(process.cwd(), filename), content, filename)
 }
 function WritePrettierConfig() {
   const filename = '.prettierrc.js'
@@ -223,8 +224,8 @@ function WritePrettierConfig() {
   node_modules
   dist
 `
-  writeFile(joinPath(process.cwd(), filename), content)
-  writeFile(joinPath(process.cwd(), ignoreFile), ignoreFileContent)
+  writeFile(joinPath(process.cwd(), filename), content, filename)
+  writeFile(joinPath(process.cwd(), ignoreFile), ignoreFileContent, ignoreFile)
 }
 export {
   WriteCommitlintConfig,

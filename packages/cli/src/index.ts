@@ -9,7 +9,6 @@ import { readJsonFile } from './utils/fsUtils'
 import { PackageJson } from './types/packageType'
 import { PackageFile } from './core/cz/packageFile/PackageFile'
 import { NodeTemplate } from './core/node-template/inquirery/inquirery'
-import { confirm } from '@inquirer/prompts'
 import inquirer from 'inquirer'
 const prompt = inquirer.createPromptModule()
 function createProgram() {
@@ -80,7 +79,6 @@ function createProgram() {
         createDataServer(dependencyGraph, posixPathJoin(ESdirname(), '../dist'))
       }
     })
-
   return program
 }
 

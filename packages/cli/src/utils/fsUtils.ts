@@ -27,15 +27,15 @@ function isDirectoryExists(pth: string) {
     }
     return true
   } catch (error) {
-  
+
     return false
   }
 }
 
-function writeFile(path: string, data: string) {
+function writeFile(path: string, data: string, filename: string = 'config') {
   try {
-    fs.writeFile(path, data, () => {})
-    successToast('Write file success!')
+    fs.writeFile(path, data, () => { })
+    successToast(`Write ${filename} file success! ✅`)
   } catch (error) {
     errorToast('failed to write')
     process.exit()

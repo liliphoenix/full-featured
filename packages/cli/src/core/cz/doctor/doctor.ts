@@ -1,29 +1,13 @@
-import { errorToast, warningToast } from '../../../utils/errorToast'
+import { errorToast, successToast, warningToast } from '../../../utils/errorToast'
 import { isFileExists } from '../../../utils/fsUtils'
 import { execSync } from 'child_process'
 import chalk from 'chalk'
 
 class Doctor {
   runBaseDoctor() {
-    try {
-      isFileExists(process.cwd(), 'package.json')
-      console.log(chalk.green('\npackage.json ✅'))
-    } catch (error) {
-      errorToast('❌ No package.json found in your project')
-    }
-    try {
-      isFileExists(process.cwd(), 'node_modules')
-      console.log(chalk.green('\nnode_modules ✅'))
-    } catch (error) {
-      errorToast('❌ Did not install the dependencies yet')
-    }
-    
-    try {
-      isFileExists(process.cwd(), 'node_modules')
-      console.log(chalk.green('\nnode_modules ✅'))
-    } catch (error) {
-      errorToast('❌ Did not install the dependencies yet')
-    }
+    isFileExists(process.cwd(), 'package.json') ? successToast('package.json ✅') : errorToast('❌ No package.json found in your project')
+    isFileExists(process.cwd(), 'node_modules') ? successToast('node_modules ✅') : errorToast('❌ Did not install the dependencies yet')
+
     return Promise
   }
   runDependencyManagerDoctor() {
